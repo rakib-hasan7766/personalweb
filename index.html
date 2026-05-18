@@ -3,234 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আমার ব্যক্তিগত ওয়েবসাইট | পোর্টফোলিও</title>
-    <!-- Tailwind CSS CDN -->
+    <title>প্রফেশনাল পোর্টফোলিও | আমার ওয়েবসাইট</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* কাস্টম গ্লোবাল স্টাইল এবং স্মুথ ব্যাকগ্রাউন্ড গ্লো */
         body {
-            background-color: #0b0f19;
-            color: #f3f4f6;
+            background-color: #f8fafc; /* হালকা ও রিফ্রেশিং ব্যাকগ্রাউন্ড */
+            color: #1e293b;
             font-family: system-ui, -apple-system, sans-serif;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .premium-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-purple-500 selection:text-white">
+<body class="antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- হেডার / নেভিগেশন বার -->
-    <header class="fixed top-0 left-0 w-full z-50 glass-card transition-all duration-300">
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-wider gradient-text">আমার পোর্টফোলিও</a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#home" class="hover:text-blue-400 transition-colors">হোম</a>
-                <a href="#about" class="hover:text-blue-400 transition-colors">আমার সম্পর্কে</a>
-                <a href="#services" class="hover:text-blue-400 transition-colors">সেবাসমূহ</a>
-                <a href="#projects" class="hover:text-blue-400 transition-colors">প্রজেক্টসমূহ</a>
-                <a href="#contact" class="hover:text-blue-400 transition-colors">যোগাযোগ</a>
+            <a href="#" class="text-2xl font-extrabold text-blue-600 tracking-tight">Rakib<span class="text-slate-800">.dev</span></a>
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#home" class="hover:text-blue-600 transition-colors">হোম</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors">আমার সম্পর্কে</a>
+                <a href="#skills" class="hover:text-blue-600 transition-colors">দক্ষতা</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors">প্রজেক্টসমূহ</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">যোগাযোগ</a>
             </nav>
-            <a href="#contact" class="hidden md:inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/20">হায়ার করুন</a>
+            <a href="#contact" class="hidden md:inline-block bg-blue-600 text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/10">হায়ার করুন</a>
         </div>
     </header>
 
-    <!-- হিরো সেকশন (Hero Section) -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- ব্যাকগ্রাউন্ড নিয়ন গ্লো ইফেক্ট -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -z-10"></div>
-
-        <div class="max-w-4xl mx-auto text-center px-6 space-y-6">
-            <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs text-purple-300 tracking-wide uppercase">
-                <span class="flex h-2 w-2 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span>নতুন প্রজেক্টের জন্য উন্মুক্ত</span>
+    <section id="home" class="min-h-screen flex items-center bg-gradient-to-b from-blue-50/50 to-transparent pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                    </span>
+                    <span>নতুন প্রজেক্টের জন্য উপলব্ধ</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                    স্মার্ট ও আধুনিক <br>
+                    <span class="text-blue-600">ওয়েব সলিউশন</span> তৈরি করি
+                </h1>
+                <p class="text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+                    আমি একজন প্রফেশনাল ওয়েব ও সফটওয়্যার ডেভেলপার। কোডিংয়ের মাধ্যমে বাস্তব জীবনের জটিল সমস্যার সমাধান, ই-কমার্স অটোমেশন এবং বিশ্বমানের ইউজার ইন্টারফেস ডিজাইন করাই আমার মূল কাজ।
+                </p>
+                <div class="pt-2 flex flex-wrap gap-4">
+                    <a href="#projects" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 transform hover:-translate-y-0.5">আমার কাজগুলো দেখুন</a>
+                    <a href="#contact" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-medium transition-all shadow-sm transform hover:-translate-y-0.5">যোগাযোগ করুন</a>
+                </div>
             </div>
             
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none">
-                আসসালামু আলাইকুম, আমি <br>
-                <span class="gradient-text">একজন ফুল-স্ট্যাক ডেভেলপার</span>
-            </h1>
-            
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto font-light">
-                আমি আধুনিক, দ্রুতগতির এবং সুরক্ষিত ওয়েব অ্যাপ্লিকেশন তৈরি করি। কোডিংয়ের মাধ্যমে বাস্তব জীবনের সমস্যার সমাধান এবং দারুণ ইউজার এক্সপেরিয়েন্স দেয়াই আমার লক্ষ্য।
-            </p>
-
-            <div class="pt-4 flex flex-wrap justify-center gap-4">
-                <a href="#projects" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3.5 rounded-xl font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all transform hover:-translate-y-0.5">আমার কাজগুলো দেখুন</a>
-                <a href="#contact" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-3.5 rounded-xl font-medium transition-all transform hover:-translate-y-0.5">যোগাযোগ করুন</a>
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-blue-200 rounded-full filter blur-3xl opacity-30 -z-10 transform scale-75"></div>
+                <div class="w-72 h-72 sm:w-96 sm:w-96 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-3xl rotate-3 premium-shadow flex items-center justify-center text-white text-6xl font-bold">
+                    <i class="fas fa-laptop-code animate-bounce"></i>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- আমার সম্পর্কে (About Section) -->
-    <section id="about" class="py-24 max-w-7xl mx-auto px-6">
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6 border-t border-slate-100">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <h2 class="text-3xl font-extrabold tracking-tight">আমার সম্পর্কে কিছু কথা</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
-                <p class="text-gray-400 leading-relaxed">
-                    প্রযুক্তির প্রতি গভীর ভালোবাসা থেকে আমার ওয়েব ডেভেলপমেন্টের পথচলা শুরু। ব্যাক-এন্ড লজিক ডিজাইন করা থেকে শুরু করে ফ্রন্ট-এন্ডের ইউজার ইন্টারফেস সুন্দরভাবে ফুটিয়ে তোলা পর্যন্ত সব কিছুতেই আমি স্বাচ্ছন্দ্যবোধ করি। নতুন নতুন টেকনোলজি শেখা এবং সেগুলোকে প্রজেক্টে রূপান্তর করা আমার নেশা।
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আমার সম্পর্কে জানুন</h2>
+                <div class="w-16 h-1 bg-blue-600 rounded"></div>
+                <p class="text-slate-600 leading-relaxed text-base">
+                    প্রযুক্তির প্রতি গভীর প্যাশন থেকে আমার এই ক্ষেত্রে পথচলা। আমি মূলত ব্যাক-এন্ড আর্কিটেকচার এবং কাস্টম কোডিং নিয়ে কাজ করতে পছন্দ করি। যেকোনো ওয়েবসাইটের ডাটাবেজ অপ্টিমাইজেশন, এপিআই অটোমেশন এবং পেমেন্ট গেটওয়ে ইন্টিগ্রেশনের মতো জটিল কাজগুলো নিখুঁতভাবে সম্পন্ন করাই আমার শক্তির জায়গা।
                 </p>
-                
-                <!-- স্কিল প্রোগ্রেস বার বা হাইলাইট -->
                 <div class="grid grid-cols-2 gap-4 pt-4">
-                    <div class="glass-card p-4 rounded-xl">
-                        <h4 class="text-2xl font-bold text-blue-400">৯৫%</h4>
-                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">ফ্রন্ট-এন্ড (UI/UX)</p>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-100 premium-shadow">
+                        <h4 class="text-3xl font-black text-blue-600">২+ বছর</h4>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">কাজের অভিজ্ঞতা</p>
                     </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <h4 class="text-2xl font-bold text-purple-400">৯০%</h4>
-                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">ব্যাক-এন্ড ও ডাটাবেজ</p>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-100 premium-shadow">
+                        <h4 class="text-3xl font-black text-emerald-600">১৫+</h4>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">সফল প্রজেক্ট</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- টেক স্ট্যাক বা স্কিল আইকন গ্রিড -->
-            <div class="grid grid-cols-3 gap-4">
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-blue-500/30 transition-colors group">
-                    <i class="fab fa-html5 text-4xl text-orange-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">HTML5</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-blue-400/30 transition-colors group">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">CSS3</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-yellow-500/30 transition-colors group">
-                    <i class="fab fa-js text-4xl text-yellow-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">JavaScript</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-purple-500/30 transition-colors group">
-                    <i class="fab fa-php text-4xl text-purple-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">PHP</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-red-500/30 transition-colors group">
-                    <i class="fab fa-laravel text-4xl text-red-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">Laravel</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center hover:border-sky-500/30 transition-colors group">
-                    <i class="fab fa-python text-4xl text-sky-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs text-gray-400 mt-2">Python</span>
+
+            <div id="skills" class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-800">আমার টেকনিক্যাল স্কিলসমূহ:</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fab fa-php text-2xl text-purple-600"></i>
+                        <span class="text-sm font-semibold text-slate-700">Raw PHP</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fab fa-laravel text-2xl text-red-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">Laravel</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fas fa-database text-2xl text-blue-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">MySQL</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fab fa-python text-2xl text-sky-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">Python</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fab fa-js text-2xl text-yellow-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">JavaScript</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                        <i class="fas fa-network-wired text-2xl text-emerald-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">REST APIs</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- সেবাসমূহ (Services) -->
-    <section id="services" class="py-24 bg-black/30">
+    <section id="projects" class="py-24 bg-slate-50 border-t border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center space-y-4 mb-16">
-                <h2 class="text-3xl font-extrabold tracking-tight">আমি যা যা সুবিধা প্রদান করি</h2>
-                <p class="text-gray-400 max-w-xl mx-auto text-sm">ব্যবসায়িক বা ব্যক্তিগত প্রয়োজনের জন্য আধুনিক টেকনোলজি ব্যবহার করে বিশ্বমানের ডিজিটাল সার্ভিস।</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- সার্ভিস ১ -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/[0.04] transition-colors space-y-4 group">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                        <i class="fas fa-code text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold">ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">ক্লায়েন্টের চাহিদা অনুযায়ী যেকোনো কাস্টম ওয়েব প্ল্যাটফর্ম বা সফটওয়্যার তৈরি করা, যা হবে অত্যন্ত দ্রুত এবং নিরাপদ।</p>
-                </div>
-                <!-- সার্ভিস ২ -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/[0.04] transition-colors space-y-4 group">
-                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold">ই-কমার্স ও POS সিস্টেম</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">পণ্য বিক্রি ও হিসাব-নিকাশ সহজ করতে কাস্টম ইনভেন্টরি, বারকোড স্ক্যানার এবং পেমেন্ট গেটওয়ে সহ ই-কমার্স সাইট তৈরি।</p>
-                </div>
-                <!-- সার্ভিস ৩ -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/[0.04] transition-colors space-y-4 group">
-                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-white transition-all">
-                        <i class="fas fa-credit-card text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold">পেমেন্ট গেটওয়ে ইন্টিগ্রেশন</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">আপনার সাইটে স্বয়ংক্রিয়ভাবে লেনদেনের জন্য bKash, Nagad রকেট বা যেকোনো লোকাল/ইন্টারন্যাশনাল এপিআই (API) কানেক্ট করা।</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- প্রজেক্ট সেকশন (Projects) -->
-    <section id="projects" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center space-y-4 mb-16">
-            <h2 class="text-3xl font-extrabold tracking-tight">আমার সাম্প্রতিক কিছু কাজ</h2>
-            <p class="text-gray-400 max-w-xl mx-auto text-sm">বাস্তব ক্ষেত্রে কাজ করা আমার সেরা কয়েকটি প্রজেক্টের একঝলক।</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- প্রজেক্ট ১ -->
-            <div class="glass-card rounded-3xl overflow-hidden group">
-                <div class="h-52 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center p-6 text-center border-b border-white/5 relative">
-                    <span class="absolute top-4 right-4 bg-blue-500/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/30">লাইভ প্রজেক্ট</span>
-                    <h4 class="text-2xl font-black text-white/40 tracking-wider uppercase group-hover:scale-105 transition-transform">POS System App</h4>
-                </div>
-                <div class="p-6 space-y-3">
-                    <h3 class="text-xl font-bold group-hover:text-blue-400 transition-colors">আধুনিক ইনভেন্টরি ও পিওএস সফটওয়্যার</h3>
-                    <p class="text-gray-400 text-sm">খুচরা বিক্রেতাদের জন্য বারকোড এবং রিয়েল-টাইম ইনভয়েস জেনারেট করার গ্রিড লেআউট ভিত্তিক সিস্টেম।</p>
-                    <div class="flex gap-2 pt-2">
-                        <span class="text-xs bg-white/5 px-2.5 py-1 rounded-md text-gray-400">Custom Code</span>
-                        <span class="text-xs bg-white/5 px-2.5 py-1 rounded-md text-gray-400">MySQL</span>
-                    </div>
-                </div>
+            <div class="space-y-3 mb-16 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আমার সাম্প্রতিক কিছু জটিল প্রজেক্ট</h2>
+                <p class="text-slate-500 max-w-xl mx-auto text-sm">বাস্তব ক্ষেত্রে কাজ করা আমার সেরা কয়েকটি বড় সফটওয়্যার প্রজেক্টের বিবরণ।</p>
             </div>
 
-            <!-- প্রজেক্ট ২ -->
-            <div class="glass-card rounded-3xl overflow-hidden group">
-                <div class="h-52 bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center p-6 text-center border-b border-white/5 relative">
-                    <span class="absolute top-4 right-4 bg-purple-500/20 text-purple-400 text-xs px-3 py-1 rounded-full border border-purple-500/30">রানিং প্রজেক্ট</span>
-                    <h4 class="text-2xl font-black text-white/40 tracking-wider uppercase group-hover:scale-105 transition-transform">Payment Aggregator</h4>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden group hover:border-blue-500 transition-all">
+                    <div class="p-8 bg-gradient-to-br from-blue-500 to-indigo-600 text-white min-h-[180px] flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <i class="fas fa-cash-register text-3xl opacity-80"></i>
+                            <span class="bg-white/20 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full font-medium">সফটওয়্যার</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-4 tracking-tight">Advanced POS & Inventory System</h3>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">আধুনিক ইনভেন্টরি ও সেলস ট্র্যাকিং সফটওয়্যার</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            খুচরা ও পাইকারি বিক্রেতাদের জন্য সম্পূর্ণ বারকোড স্ক্যানিং সুবিধা, রিয়েল-টাইম ইনভয়েস জেনারেশন এবং গ্রিড লেআউট ভিত্তিক সেলস ইন্টারফেস সিস্টেম।
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">Custom Code</span>
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">MySQL DB</span>
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">Barcode API</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6 space-y-3">
-                    <h3 class="text-xl font-bold group-hover:text-purple-400 transition-colors">পেমেন্ট গেটওয়ে রিসেলার প্ল্যাটফর্ম</h3>
-                    <p class="text-gray-400 text-sm">মার্চেন্টদের জন্য নিজস্ব মোবাইল নম্বরে সরাসরি ফান্ড রিসিভ এবং এপিআই অটোমেশন করার একটি সমন্বিত প্যানেল।</p>
-                    <div class="flex gap-2 pt-2">
-                        <span class="text-xs bg-white/5 px-2.5 py-1 rounded-md text-gray-400">PHP API</span>
-                        <span class="text-xs bg-white/5 px-2.5 py-1 rounded-md text-gray-400">Webhooks</span>
+
+                <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden group hover:border-blue-500 transition-all">
+                    <div class="p-8 bg-gradient-to-br from-emerald-500 to-teal-600 text-white min-h-[180px] flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <i class="fas fa-wallet text-3xl opacity-80"></i>
+                            <span class="bg-white/20 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full font-medium">এপিআই অটোমেশন</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-4 tracking-tight">PayBD - Payment Reseller Platform</h3>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">মাল্টি-মার্চেন্ট পেমেন্ট গেটওয়ে অ্যাগ্রিগেটর</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            মার্চেন্টদের জন্য একটি অভিনব প্ল্যাটফর্ম যেখানে কোনো সেন্ট্রাল ব্যালেন্স ছাড়াই গ্রাহকদের টাকা সরাসরি মার্চেন্টের নিজস্ব বিকাশ বা নগদ নম্বরে জমা হয়। 
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">Raw PHP</span>
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">Webhooks</span>
+                            <span class="text-xs font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">bKash/Nagad API</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- যোগাযোগ সেকশন (Contact) -->
-    <section id="contact" class="py-24 bg-black/30">
-        <div class="max-w-3xl mx-auto px-6 text-center space-y-8">
-            <h2 class="text-3xl font-extrabold tracking-tight">চলুন একসাথে নতুন কিছু তৈরি করি!</h2>
-            <p class="text-gray-400 text-sm max-w-xl mx-auto leading-relaxed">
-                আপনার কি কোনো আইডিয়া আছে বা নতুন কোনো প্রজেক্ট নিয়ে আলোচনা করতে চান? নির্দ্বিধায় সরাসরি নিচের মাধ্যমে আমার সাথে যোগাযোগ করতে পারেন।
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-6 pt-4">
-                <a href="mailto:your-email@example.com" class="glass-card px-6 py-4 rounded-2xl flex items-center space-x-3 hover:border-purple-500/40 transition-colors">
-                    <i class="fas fa-envelope text-xl text-purple-400"></i>
-                    <span class="text-sm font-medium">your-email@example.com</span>
-                </a>
-                <a href="https://github.com" target="_blank" class="glass-card px-6 py-4 rounded-2xl flex items-center space-x-3 hover:border-blue-500/40 transition-colors">
-                    <i class="fab fa-github text-xl text-blue-400"></i>
-                    <span class="text-sm font-medium">গিটহাব প্রোফাইল</span>
-                </a>
-            </div>
+    <section id="contact" class="py-24 max-w-4xl mx-auto px-6 text-center space-y-8">
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আপনার পরবর্তী বড় প্রজেক্ট নিয়ে আলোচনা করি!</h2>
+        <p class="text-slate-600 text-base max-w-xl mx-auto leading-relaxed">
+            আপনার কি কোনো ইউনিক আইডিয়া আছে যা সফটওয়্যারে রূপান্তর করতে চান? নিচে দেওয়া ইমেইল বা গিটহাবের মাধ্যমে সরাসরি যোগাযোগ করুন।
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 pt-4">
+            <a href="mailto:your-email@example.com" class="bg-white border border-slate-200 px-6 py-4 rounded-2xl flex items-center space-x-3 hover:border-blue-500 transition-colors premium-shadow">
+                <i class="fas fa-envelope text-xl text-blue-600"></i>
+                <span class="text-sm font-semibold text-slate-700">your-email@example.com</span>
+            </a>
+            <a href="https://github.com" target="_blank" class="bg-white border border-slate-200 px-6 py-4 rounded-2xl flex items-center space-x-3 hover:border-slate-800 transition-colors premium-shadow">
+                <i class="fab fa-github text-xl text-slate-800"></i>
+                <span class="text-sm font-semibold text-slate-700">গিটহাব প্রোফাইল</span>
+            </a>
         </div>
     </section>
 
-    <!-- ফুটার (Footer) -->
-    <footer class="border-t border-white/5 py-8 text-center text-xs text-gray-500">
-        <p>&copy; ২০২৬ আমার পোর্টফোলিও। সর্বস্বত্ব সংরক্ষিত।</p>
+    <footer class="bg-white border-t border-slate-100 py-8 text-center text-xs font-semibold text-slate-400">
+        <p>&copy; ২০২৬ Rakib.dev | সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
 </body>
