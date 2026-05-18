@@ -1,5 +1,5 @@
 <?php
-// Render থেকে পাওয়া External Database URL টি এখানে বসাবেন
+// Render থেকে পাওয়া আপনার External Database URL টি নিচে বসাবেন
 $db_url = "postgres://your_user:your_password@your_host.render.com/your_dbname";
 
 $db_config = parse_url($db_url);
@@ -16,22 +16,23 @@ if (!$conn) {
     die("Database Connection Failed!");
 }
 
-// টেবিল তৈরি এবং ডাটা ইনসার্ট করার কুয়েরি
+// ক্যাটাগরি এবং লিংক জমার টেবিল তৈরি করার কুয়েরি
 $sql = "
-CREATE TABLE IF NOT EXISTS site_settings (
+CREATE TABLE IF NOT EXISTS site_links (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
-    description TEXT
+    site_name VARCHAR(255) NOT NULL,
+    site_url TEXT NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO site_settings (title, description) 
-SELECT 'Easy Buy BD', 'Welcome to our premium e-commerce site.'
-WHERE NOT EXISTS (SELECT 1 FROM site_settings WHERE id = 1);
 ";
 
-// কুয়েরি রান করা
 if (pg_query($conn, $sql)) {
-    echo "<h1>চমৎকার! ডাটাবেজ টেবিল এবং ডিফল্ট ডাটা সফলভাবে তৈরি হয়েছে।</h1>";
+    echo "<h1>অভিনন্দন! সেবা পোর্টালের ডাটাবেজ টেবিল সফলভাবে তৈরি হয়েছে।</h1>";
+    echo "<p>এখন আপনি এই ফাইলটি ব্রাউজারে একবার রান করার পর গিটহাব থেকে ডিলিট বা রিনেম করে দিতে পারেন নিরাপত্তার জন্য।</p>";
 } else {
     echo "এরর হয়েছে: " . pg_last_error($conn);
 }
+?>
 ?>
