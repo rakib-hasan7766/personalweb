@@ -22,12 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_link'])) {
         $query = "INSERT INTO site_links (site_name, site_url, category, description) VALUES ('$site_name', '$site_url', '$category', '$description')";
         $result = pg_query($conn, $query);
         if ($result) {
-            $message = "<div class='bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl text-sm mb-4 font-medium'>🚀 নতুন লিংকটি সফলভাবে ডাটাবেজে সেভ হয়েছে!</div>";
+            $message = "<div class='bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl text-sm mb-5 font-medium flex items-center gap-2'><span>🚀</span> নতুন লিংকটি সফলভাবে ডাটাবেজে সেভ হয়েছে!</div>";
         } else {
-            $message = "<div class='bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-sm mb-4 font-medium'>❌ লিংক সেভ করতে সমস্যা হয়েছে।</div>";
+            $message = "<div class='bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-sm mb-5 font-medium flex items-center gap-2'><span>❌</span> লিংক সেভ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।</div>";
         }
     } else {
-        $message = "<div class='bg-amber-50 border border-amber-200 text-amber-700 px-4 py-3 rounded-xl text-sm mb-4 font-medium'>⚠️ দয়া করে সব জরুরি ঘরগুলো পূরণ করুন।</div>";
+        $message = "<div class='bg-amber-50 border border-amber-200 text-amber-700 px-4 py-3 rounded-xl text-sm mb-5 font-medium flex items-center gap-2'><span>⚠️</span> দয়া করে সব জরুরি ঘরগুলো পূরণ করুন।</div>";
     }
 }
 ?>
@@ -35,54 +35,124 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_link'])) {
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>সেবা পোর্টাল - অ্যাডমিন ড্যাশবোর্ড</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>সেবা পোর্টাল - অ্যাডমিন প্যানেল</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* চমৎকার হালকা ব্যাকগ্রাউন্ড */
+        }
+        /* ইনপুট বক্সে ফোকাস করলে মোবাইল ব্রাউজারের ফোর্স জুম বন্ধের ট্রিক */
+        @media screen and (max-width: 768px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
         }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
 
     <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
             <div>
                 <h1 class="text-xl font-bold text-blue-600 flex items-center gap-2">
-                    🛠️ <span>অ্যাডমিন ড্যাশবোর্ড</span>
+                    🛠️ <span class="tracking-tight">অ্যাডমিন ড্যাশবোর্ড</span>
                 </h1>
-                <p class="text-xs text-slate-500 mt-0.5">নতুন রিসোর্স ও সেবা লিংক যুক্ত করুন</p>
+                <p class="text-xs text-slate-500 mt-0.5">নতুন রিসোর্স ও সাইট লিংক ডাটাবেজে যুক্ত করুন</p>
             </div>
-            <a href="index.php" target="_blank" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-600 border border-slate-200 hover:border-blue-200 px-3 py-2 rounded-xl transition-all font-medium flex items-center gap-1">
-                লাইভ সাইট ➔
+            <a href="index.php" class="bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white border border-blue-100 px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-sm">
+                হোম সাইট ➔
             </a>
         </div>
     </header>
 
-    <main class="max-w-2xl w-full mx-auto px-4 py-8 flex-grow flex flex-col justify-center">
+    <main class="max-w-xl w-full mx-auto px-4 py-8 flex-grow flex flex-col justify-center">
         <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8">
             
-            <div class="mb-6 text-center sm:text-left">
-                <h2 class="text-lg font-bold text-slate-800">새 নতুন লিংক সিকিউরলি যুক্ত করুন</h2>
-                <p class="text-xs text-slate-500 mt-0.5">নিচের ফর্মটি পূরণ করে ডাটাবেজে ডাটা পাঠান</p>
+            <div class="mb-6 border-b border-slate-100 pb-4">
+                <h2 class="text-lg font-bold text-slate-800 flex items-center gap-1.5">
+                    <span>➕</span> নতুন লিংক যুক্ত করুন
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">সব তথ্য সঠিকভাবে পূরণ করে নিচের বাটনে ক্লিক করুন</p>
             </div>
 
             <?php echo $message; ?>
 
             <form action="admin.php" method="POST" class="space-y-5">
                 
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1.5">ওয়েবসাইটের নাম <span class="text-rose-500">*</span></label>
-                    <input type="text" name="site_name" required placeholder="যেমন: ই-পাসপোর্ট পোর্টাল" 
-                           class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm">
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        ওয়েবসাইটের নাম <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="text" name="site_name" required 
+                           placeholder="যেমন: ই-পাসপোর্ট অনলাইন আবেদন" 
+                           class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white text-sm transition-all shadow-sm">
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1.5">ওয়েবসাইট লিংক (URL) <span class="text-rose-500">*</span></label>
-                    <input type="url" name="site_url" required placeholder="https://example.com" 
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        ওয়েবসাইট লিংক (URL) <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="url" name="site_url" required 
+                           placeholder="https://www.example.gov.bd" 
+                           class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white text-sm transition-all shadow-sm">
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        ক্যাটাগরি সিলেক্ট করুন <span class="text-rose-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <select name="category" required 
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white text-sm transition-all shadow-sm cursor-pointer appearance-none">
+                            <option value="" disabled selected>ক্যাটাগরি বেছে নিন...</option>
+                            <option value="সরকারি সেবা">সরকারি সেবা</option>
+                            <option value="প্রবাসী সেবা">প্রবাসী সেবা</option>
+                            <option value="শিক্ষা ও রেজাল্ট">শিক্ষা ও রেজাল্ট</option>
+                            <option value="পেমেন্ট ও ব্যাংকিং">পেমেন্ট ও ব্যাংকিং</option>
+                            <option value="ইউটিলিটি ও টুলস">ইউটিলিটি ও টুলস</option>
+                            <option value="সফটওয়্যার ডাউনলোড">সফটওয়্যার ডাউনলোড</option>
+                            <option value="ক্রিয়াটিভ ও এআই টুলস">ক্রিয়াটিভ ও এআই টুলস</option>
+                            <option value="রাকিব ড্রাইভ রিসোর্স">রাকিব ড্রাইভ রিসোর্স</option>
+                            <option value="প্রিমিয়াম ভিডিও কোর্স">প্রিমিয়াম ভিডিও কোর্স</option>
+                            <option value="Annyanno">Annyanno</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                            ▼
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        ছোট বিবরণ (অপশনাল)
+                    </label>
+                    <textarea name="description" rows="3" 
+                              placeholder="সাইটের কাজ বা সুবিধা সম্পর্কে সংক্ষেপে ১-২ লাইন লিখুন..." 
+                              class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white text-sm transition-all shadow-sm resize-none></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" name="add_link" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all duration-150 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform active:scale-[0.99]">
+                        <span>ডাটাবেজে ডেটা সেভ করুন</span> ➔
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-4">
+        <div class="max-w-4xl mx-auto px-4 text-center text-[11px] text-slate-400 font-medium">
+            <p>© <?php echo date('Y'); ?> অ্যাডমিন ম্যানেজমেন্ট প্যানেল | আলট্রা-ক্লিন ইউআই ফিক্সড ⚡</p>
+        </div>
+    </footer>
+
+</body>
+</html>
                            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm">
                 </div>
 
