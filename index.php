@@ -1,4 +1,3 @@
-
 <?php
 // ১. ডাটাবেজ কানেকশন (সংশোধিত এক্সটার্নাল হোস্টসহ)
 $host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; // এক্সটার্নাল পাবলিক হোস্ট এড্রেস
@@ -13,8 +12,6 @@ $conn = pg_connect($connection_string);
 if (!$conn) { 
     die("Database Connection Failed! Please check your External Host configurations."); 
 }
-
-// বাকি কোড আগের মতোই থাকবে...
 
 // ২. ডাটাবেজে নতুন লিংক সেভ করার কোর লজিক
 $message = "";
@@ -242,7 +239,7 @@ if ($fetch_result) {
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden p-8">
                         <h3 class="text-2xl font-bold tracking-tight text-slate-900">Advanced POS & Inventory System</h3>
-                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">খুচরা ও পাইকারি বিক্রেতাদের জন্য সম্পূর্ণ বারকোড স্ক্যানিং সুবিধা, রিয়েল-টাইম ইনভয়েস জেনারেশন এবং গ্রিড লেআউট ভিত্তিক সেলস ইন্টারফেস সিস্টেম।</p>
+                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">খুচরা ও পাইকারি বিক্রেতাদের জন্য সম্পূর্ণ বারকোড স্ক্যানিং সুবিধা, রিয়েল-টাইম ইনভয়েস জেনারেশন এবং গ্রিড লেআউট ভিত্তিক সেলস ইন্টারফেসシステム।</p>
                     </div>
                     <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden p-8">
                         <h3 class="text-2xl font-bold tracking-tight text-slate-900">PayBD - Payment Reseller Platform</h3>
@@ -279,40 +276,40 @@ if ($fetch_result) {
                                 <button onclick="switchTab('sig-pad')" id="btn-sig-pad" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
                                     <i class="fas fa-pen-nib w-4 text-amber-500"></i> ৩. Transparent Signature Pad
                                 </button>
-                                <button onclick="executeQuickTool('৪. স্মার্ট পাসপোর্ট সাইজ ফটো মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৪. スマート パスポート サイズ フォト メーカー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-user-tie w-4 text-sky-400"></i> ৪. পাসপোর্ট সাইজ ফটো মেকার
                                 </button>
-                                <button onclick="executeQuickTool('৫. ব্যাকগ্রাউন্ড রিমুভার ইন্টেলিজেন্স')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৫. バックグラウンド リムーバー インテলিジェンス')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-eraser w-4 text-rose-400"></i> ৫. ওয়ান-ক্লিক ব্যাকগ্রাউন্ড রিমুভার
                                 </button>
-                                <button onclick="executeQuickTool('৬. ইমেজ টু পিডিএফ কনভার্টার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৬. イメージ トゥ PDF コンバーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-file-pdf w-4 text-red-400"></i> ৬. ইমেজ টু পিডিএফ কনভার্টার
                                 </button>
-                                <button onclick="executeQuickTool('৭. বিএমপি / জেপিজি রিসাইজার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৭. BMP / JPG リサイザー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-compress-alt w-4 text-indigo-400"></i> ৭. JPG / PNG রিসাইজার ইঞ্জিন
                                 </button>
-                                <button onclick="executeQuickTool('৮. জন্ম নিবন্ধন কার্ড ক্রপার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৮. 出生登録カード クロッパー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-scroll w-4 text-teal-400"></i> ৮. জন্ম নিবন্ধন কার্ড ক্রপার
                                 </button>
-                                <button onclick="executeQuickTool('৯. টিন সার্টিফিকেট মেকার লেআউট')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৯. TIN 証明書メーカー レイアウト')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-file-invoice w-4 text-yellow-500"></i> ৯. TIN সার্টিফিকেট ক্রপার
                                 </button>
-                                <button onclick="executeQuickTool('১০. স্ট্যাম্প সাইজ ফটো জেনারেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১০. スタンプ サイズ フォト ジェネレーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-images w-4 text-purple-400"></i> ১০. স্ট্যাম্প সাইজ ফটো মেকার
                                 </button>
-                                <button onclick="executeQuickTool('১১. ড্রাইভিং লাইসেন্স কম্বাইনার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১১. 運転免許証コンバイナー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-id-badge w-4 text-cyan-400"></i> ১১. ড্রাইভিং লাইসেন্স কম্বাইনার
                                 </button>
-                                <button onclick="executeQuickTool('১২. স্মার্ট ওয়াটারমার্ক রিমুভার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১২. スマート ウォーターマーク リムーバー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-tint-slash w-4 text-orange-400"></i> ১২. ওয়াটারমার্ক প্রটেক্টর
                                 </button>
-                                <button onclick="executeQuickTool('১৩. ইমেজ টেক্সট এক্সট্রাক্টর (OCR)')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১৩. イメージ テキスト エクストラクター (OCR)')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-language w-4 text-emerald-400"></i> ১৩. ইমেজ টেক্সট এক্সট্রাক্টর (OCR)
                                 </button>
-                                <button onclick="executeQuickTool('১৪. লোগো ও ব্যানার অটো প্যাডিং')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১৪. ロゴ ＆ バナー オート パディング')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-border-all w-4 text-pink-400"></i> ১৪. ফটো বর্ডার ও প্যাডিং টুল
                                 </button>
-                                <button onclick="executeQuickTool('১৫. মাল্টিপল ফটো কোলাজ মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১৫. マルチプル フォト コラージュ メーカー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-th w-4 text-violet-400"></i> ১৫. A4 মাল্টি-ফটো গ্রিড মেকার
                                 </button>
                             </div>
@@ -321,7 +318,7 @@ if ($fetch_result) {
                         <div>
                             <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 pt-2 pb-1.5 border-b border-slate-1000 mb-1">📊 Converters & Smart Utilities</div>
                             <div class="space-y-1">
-                                <button onclick="switchTab('date-words')" id="btn-date-words" class="tab-btn w-full text-left px-3 py 2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
+                                <button onclick="switchTab('date-words')" id="btn-date-words" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
                                     <i class="fas fa-calendar-alt w-4 text-purple-500"></i> ১৬. Date to Words (তারিখ কথায়)
                                 </button>
                                 <button onclick="switchTab('num-words')" id="btn-num-words" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
@@ -330,40 +327,40 @@ if ($fetch_result) {
                                 <button onclick="switchTab('qr-generator')" id="btn-qr-generator" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
                                     <i class="fas fa-qrcode w-4 text-blue-400"></i> ১৮. Smart QR Code Generator
                                 </button>
-                                <button onclick="executeQuickTool('১৯. বিকাশ পিন রিসেট ক্যালকুলেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('১৯. bKash ピン リセット カルキュレーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-calculator w-4 text-pink-500"></i> ১৯. bKash/Nagad চার্জ হিসাবক
                                 </button>
-                                <button onclick="executeQuickTool('২০. ইউনিকোড টু বিজড় কনভার্টার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২০. ユニコード トゥ ビジョイ コンバーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-exchange-alt w-4 text-yellow-400"></i> ২০. ইউনিকোড টু বিজয় কনভার্টার
                                 </button>
-                                <button onclick="executeQuickTool('২১. পাসওয়ার্ড জেনারেটর প্রো')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২১. パスワード ジェネレーター プロ')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-key w-4 text-gray-400"></i> ২১. স্ট্রং পাসওয়ার্ড জেনারেটর
                                 </button>
-                                <button onclick="executeQuickTool('২২. টেক্সট টু ভয়েস (TTS) ইঞ্জিন')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২২. テキスト トゥ ボイス (TTS) エンジン')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-volume-up w-4 text-green-400"></i> ২২. বাংলা টেক্সট টু ভয়েস স্পিচ
                                 </button>
-                                <button onclick="executeQuickTool('২৩. লাইভ কারেন্সি রেট বিডি')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৩. ライブ カレンシー レート BD')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-dollar-sign w-4 text-emerald-400"></i> ২৩. লাইভ রেমিট্যান্স রেট চেকার
                                 </button>
-                                <button onclick="executeQuickTool('২৪. বয়স ক্যালকুলেটর একুরেট')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৪. 年齢カルキュレーター アキュレート')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-hourglass-half w-4 text-blue-400"></i> ২৪. নিখুঁত বয়স ক্যালকুলেটর
                                 </button>
-                                <button onclick="executeQuickTool('২৫. ইউআরএল এনকোডার ডিক canওডার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৫. URL エンコーダー / デコーダー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-code w-4 text-sky-400"></i> ২৫. URL Encoder / Decoder
                                 </button>
-                                <button onclick="executeQuickTool('২৬. টেক্সট কেস চেঞ্জার আপারলোয়ার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৬. テキスト ケース チェンジャー')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-font w-4 text-orange-400"></i> ২৬. Text Case Changer
                                 </button>
-                                <button onclick="executeQuickTool('২৭. এমডি৫ / শা২৫৬ হ্যাশ জেনারেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৭. MD5 / SHA-256 ジェネレーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-shield-alt w-4 text-red-500"></i> ২৭. MD5 / SHA-256 জেনারেটর
                                 </button>
-                                <button onclick="executeQuickTool('২৮. ডক ফাইল ভিউয়ার অনলাইন')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৮. doc ファイル ビューアー オンライン')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-file-word w-4 text-indigo-500"></i> ২৮. ডকুমেন্ট ফাইল ভিউয়ার
                                 </button>
-                                <button onclick="executeQuickTool('২৯. আইপি এড্রেস লোকেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('২৯. IP アドレス ロケーター')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-map-marker-alt w-4 text-rose-500"></i> ২৯. মাই আইপি ইনফো লোকেটর
                                 </button>
-                                <button onclick="executeQuickTool('৩০. ইনভয়েস / বিল মেকার লাইট')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                <button onclick="executeQuickTool('৩০. インボイス / ビル メーカー ライト')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
                                     <i class="fas fa-print w-4 text-teal-400"></i> ৩০. কুইক ক্যাশ মেমো / বিল মেকার
                                 </button>
                             </div>
@@ -392,7 +389,7 @@ if ($fetch_result) {
                             <div>
                                 <label class="text-xs font-bold text-slate-500 block mb-1">ক্যাটাগরি সিলেক্ট করুন *</label>
                                 <select name="category" required class="w-full px-4 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="সরকারি সেবা">সরকারি সেবা</option>
+                                    <option value="सरकारी सेवा">सरकारी सेवा</option>
                                     <option value="প্রবাসী সেবা">প্রবাসী সেবা</option>
                                     <option value="শিক্ষা ও রেজাল্ট">শিক্ষা ও রেজাল্ট</option>
                                     <option value="পেমেন্ট ও ব্যাংকিং">পেমেন্ট ও ব্যাংকিং</option>
@@ -480,7 +477,7 @@ if ($fetch_result) {
                     <div id="quick-tool-box" class="tab-content bg-white p-6 rounded-2xl border border-slate-200 text-center">
                         <p class="text-4xl mb-2">⚡</p>
                         <h3 id="quick-tool-title" class="text-base font-bold text-slate-800">কাস্টম অটোমেশন ইঞ্জিন</h3>
-                        <p class="text-xs text-slate-500 mt-2">এই মডিউলটি আপনার এনআইডি ও লোকাল পিএইচপি কাস্টম ব্যাকএন্ড সার্ভারের সাথে সফলভাবে রেডি রয়েছে। অপারেশন এক্সিকিউট করতে প্রয়োজনীয় ছবি বা ডাটা লোড করুন।</p>
+                        <p class="text-xs text-slate-500 mt-2">এই মডিউলটি আপনার এনআইডি ও লোকাল পিএইচপি কাস্টম ব্যাকএন্ড সার্ভারের সাথে সফলভাবে রেডি রয়েছে। অপারেশন এক্সিকিউট করতে প্রয়োজনীয় ছবি বা ডাটা লোড করুন</p>
                         <div class="mt-4 border border-dashed p-6 rounded-xl bg-slate-50 max-w-sm mx-auto">
                             <input type="file" class="text-xs text-slate-500 w-full mb-3">
                             <button onclick="alert('আপনার লোকাল কাস্টম মডিউল ইঞ্জিনে প্রসেস সফল হয়েছে!')" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-xl font-bold">রান অপারেশন</button>
