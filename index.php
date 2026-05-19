@@ -1,4 +1,4 @@
-<?php
+
 <?php
 // ১. ডাটাবেজ কানেকশন (সংশোধিত এক্সটার্নাল হোস্টসহ)
 $host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; // এক্সটার্নাল পাবলিক হোস্ট এড্রেস
