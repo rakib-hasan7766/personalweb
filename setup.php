@@ -1,4 +1,5 @@
 <?php
+// ১. ডাটাবেজ কানেকশন (সংশোধিত এক্সটার্নাল হোস্টসহ)
 $host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; 
 $user = "perwebb"; 
 $password = "NGeh1PNCgSo3e36xH5oTrQqUBFPXMsx3"; 
@@ -8,9 +9,11 @@ $port = "5432";
 $connection_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 $conn = pg_connect($connection_string);
 
-if (!$conn) { die("Database Connection Failed!"); }
+if (!$conn) { 
+    die("Database Connection Failed!"); 
+}
 
-// টেবিল তৈরির কুয়েরি
+// ২. টেবিল তৈরির কুয়েরি
 $sql_table = "
 CREATE TABLE IF NOT EXISTS site_links (
     id SERIAL PRIMARY KEY,
@@ -22,25 +25,25 @@ CREATE TABLE IF NOT EXISTS site_links (
 );";
 pg_query($conn, $sql_table);
 
-// পিডিএফ এবং টেক্সটের শতভাগ লিংকের কমপ্লিট অ্যারে
+// ৩. পিডিএফ এবং টেক্সটের শতভাগ লিংকের কমপ্লিট অ্যারে
 $default_links = [
     // === সরকারি ও নাগরিক সেবা ===
-    ['জাতীয় তথ্য বাতায়ন, 'https://bangladesh.gov.bd', 'সরকারি সেবা', 'বাংলাদেশের সব সরকারি মন্ত্রণালয় ও সেবার মেইন পোর্টাল।'],
-    ['এনআইডি পোর্টাল (NID)', 'https://services.nidw.gov.bd/nid-pub/', 'সরকারি সেবা', 'জাতীয় পরিচয়পত্র ডাউনলোড, সংশোধন ও নতুন নিবন্ধনের সাইট।'],
-    ['অনলাইন পাসপোর্ট আবেদন', 'https://www.epassport.gov.bd/landing', 'সরকারি সেবা', 'ই-পাসপোর্ট আবেদন এবং নতুন অ্যাকাউন্ট খোলার পোর্টাল।'],
+    ['জাতীয় তথ্য বাতায়ন', 'https://bangladesh.gov.bd', 'सरकारी सेवा', 'বাংলাদেশের সব সরকারি মন্ত্রণালয় ও সেবার মেইন পোর্টাল।'],
+    ['এনআইডি পোর্টাল (NID)', 'https://services.nidw.gov.bd/nid-pub/', 'सरकारी सेवा', 'জাতীয় পরিচয়পত্র ডাউনলোড, সংশোধন ও নতুন নিবন্ধনের সাইট।'],
+    ['অনলাইন পাসপোর্ট আবেদন', 'https://www.epassport.gov.bd/landing', 'सरकारी सेवा', 'ই-পাসপোর্ট আবেদন এবং নতুন অ্যাকাউন্ট খোলার পোর্টাল।'],
     ['পাসপোর্ট স্ট্যাটাস চেক', 'https://www.epassport.gov.bd/authorization/application-status', 'Annyanno', 'স্লিপ নম্বর দিয়ে পাসপোর্ট রেডি হয়েছে কি না চেক করার লিংক।'],
-    ['জন্মনিবন্ধন অনলাইন কপি যাচাই', 'https://everify.bdris.gov.bd/', 'সরকারি সেবা', 'জন্মনিবন্ধন অনলাইন কপি চেক এবং ডাউনলোড করার লিংক।'],
-    ['জন্মনিবন্ধন নতুন আবেদন', 'https://bdris.gov.bd/br/application', 'সরকারি সেবা', 'নতুন জন্মনিবন্ধনের জন্য অনলাইন আবেদন ফরম।'],
-    ['কোভিড-১৯ করোনা ভ্যাক্সিন পোর্টাল', 'https://surokkha.gov.bd/', 'সরকারি সেবা', 'সুরক্ষা পোর্টাল - করোনা ভ্যাক্সিন নিবন্ধন ও সার্টিফিকেট ডাউনলোড।'],
-    ['বিআরটিএ সেবা পোর্টাল', 'https://bsp.brta.gov.bd/', 'সরকারি সেবা', 'অনলাইনে ড্রাইভিং লাইসেন্স করার সঠিক নিয়ম ও ট্র্যাকিং পোর্টাল।'],
-    ['ভূমি উন্নয়ন কর পোর্টাল', 'https://ldtax.gov.bd/citizen/register', 'সরকারি সেবা', 'নাগরিক ভূমি উন্নয়ন কর বা খাজনা প্রদানের অনলাইন রেজিস্ট্রেশন লিংক।'],
+    ['জন্মনিবন্ধন অনলাইন কপি যাচাই', 'https://everify.bdris.gov.bd/', 'सरकारी सेवा', 'জন্মনিবন্ধন অনলাইন কপি চেক এবং ডাউনলোড করার লিংক।'],
+    ['জন্মনিবন্ধন নতুন আবেদন', 'https://bdris.gov.bd/br/application', 'सरकारी सेवा', 'নতুন জন্মনিবন্ধনের জন্য অনলাইন আবেদন ফরম।'],
+    ['কোভিড-১৯ করোনা ভ্যাক্সিন পোর্টাল', 'https://surokkha.gov.bd/', 'सरकारी सेवा', 'সুরক্ষা পোর্টাল - করোনা ভ্যাক্সিন নিবন্ধন ও সার্টিফিকেট ডাউনলোড।'],
+    ['বিআরটিএ সেবা পোর্টাল', 'https://bsp.brta.gov.bd/', 'सरकारी सेवा', 'অনলাইনে ড্রাইভিং লাইসেন্স করার সঠিক নিয়ম ও ট্র্যাকিং পোর্টাল।'],
+    ['ভূমি উন্নয়ন কর পোর্টাল', 'https://ldtax.gov.bd/citizen/register', 'सरकारी सेवा', 'নাগরিক ভূমি উন্নয়ন কর বা খাজনা প্রদানের অনলাইন রেজিস্ট্রেশন লিংক।'],
     ['অনলাইন জিডি (BD Police)', 'https://gd.police.gov.bd', 'Annyanno', 'থানায় না গিয়ে অনলাইনে ঘরে বসে সাধারণ ডায়েরি বা GD করার অ্যাপ।'],
     ['ই-টিন (TIN) আবেদন পোর্টাল', 'https://secure.incometax.gov.bd/TINHome', 'Annyanno', 'নতুন ই-টিন সার্টিফিকেটের জন্য অনলাইন আবেদন এর লিংক।'],
-    ['বাংলাদেশ ফরম পোর্টাল', 'https://forms.gov.bd', 'সরকারি সেবা', 'সব ধরনের সরকারি আবেদনের ফরম এক জায়গায় ডাউনলোড করুন।'],
+    ['বাংলাদেশ ফরম পোর্টাল', 'https://forms.gov.bd', 'सरकारी सेवा', 'সব ধরনের সরকারি আবেদনের ফরম এক জায়গায় ডাউনলোড করুন।'],
     ['ই-নামজারি আবেদন', 'https://mutation.land.gov.bd', 'Annyanno', 'জমির ই-নামজারি বা মিউটেশনের অনলাইন আবেদন পোর্টাল।'],
-    ['গর্ভবতী ভাতার আবেদন', 'https://www.youtube.com/watch?v=avjheqYhmQw', 'Annyanno', 'গর্ভবতী ভাতার অনলাইন আবেদন করার নিয়ম ও গাইড ভিডিও।'],
+    ['...গর্ভবতী ভাতার আবেদন', 'https://www.youtube.com/watch?v=avjheqYhmQw', 'Annyanno', 'গর্ভবতী ভাতার অনলাইন আবেদন করার নিয়ম ও গাইড ভিডিও।'],
     ['ভিডব্লিউবি কর্মসূচি (VWB)', 'http://dwavwb.gov.bd/icvgd/applicant/vgd/application-find', 'Annyanno', 'মহিলা ও শিশু বিষয়ক মন্ত্রণালয়ের ভিডব্লিউবি কর্মসূচি ট্র্যাকিং।'],
-    ['৩০ কেজি চাউলের আবেদন ফরম', 'http://dwavwb.gov.bd/icvgd/applicant/vgd/form', 'সরকারি সেবা', 'ভিজিডি/ভিডব্লিউবি কার্ডের ৩০ কেজি চালের অনলাইন আবেদন লিংক।'],
+    ['৩০ কেজি চাউলের আবেদন ফরম', 'http://dwavwb.gov.bd/icvgd/applicant/vgd/form', 'सरकारी सेवा', 'ভিজিডি/ভিডব্লিউবি কার্ডের ৩০ কেজি চালের অনলাইন আবেদন লিংক।'],
     ['প্রাথমিক শিক্ষক বেতন রশিদ', 'https://ibas.finance.gov.bd/ibas2/Fixation', 'Annyanno', 'iBAS++ এর মাধ্যমে প্রাইমারি স্কুলের শিক্ষকদের বেতন ফিক্সেশন রশিদ বের করার লিংক।'],
 
     // === প্রবাসী সেবা ও ভিসা চেক ===
@@ -62,6 +65,7 @@ $default_links = [
     // === শিক্ষা ও রেজাল্ট ===
     ['এডুকেশন বোর্ড রেজাল্ট', 'http://www.educationboardresults.gov.bd', 'শিক্ষা ও রেজাল্ট', 'SSC, HSC, JSC পরীক্ষার অফিশিয়াল রেজাল্ট দেখার প্রধান পোর্টাল।'],
     ['ওয়েব বেজ রেজাল্ট সিস্টেম', 'https://eboardresults.com/v2/home', 'শিক্ষা ও রেজাল্ট', 'সকল পাবলিক পরীক্ষার জেলা, বোর্ড ও প্রতিষ্ঠান ভিত্তিক বিস্তারিত রেজাল্ট।'],
+    ['Web Based Result', 'https://eboardresults.com', 'শিক্ষা ও রেজাল্ট', 'জেলা বা প্রতিষ্ঠান ভিত্তিক বিশদ রেজাল্ট দেখার অনলাইন মাধ্যম।'],
     ['ডিগ্রি/অনার্স রেজাল্ট পোর্টাল', 'http://103.113.200.7/', 'শিক্ষা ও রেজাল্ট', 'জাতীয় বিশ্ববিদ্যালয়ের ডিগ্রি ও অনার্স পরীক্ষার রেজাল্ট চেক করার লিংক।'],
     ['একাদশে ভর্তি পোর্টাল', 'http://xiclassadmission.gov.bd', 'শিক্ষা ও রেজাল্ট', 'কলেজে একাদশ শ্রেণিতে অনলাইনের মাধ্যমে ভর্তির আবেদন সাইট।'],
     ['মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর', 'https://dshe.gov.bd', 'শিক্ষা ও রেজাল্ট', 'শিক্ষা সংক্রান্ত নোটিশ ও নির্দেশনাবলী দেখার সরকারি সাইট।'],
@@ -71,7 +75,7 @@ $default_links = [
     ['বিকাশ (bKash)', 'https://www.bkash.com', 'পেমেন্ট ও ব্যাংকিং', 'বাংলাদেশের সবচেয়ে বড় মোবাইল ফিনান্সিয়াল সার্ভিস।'],
     ['নগদ (Nagad)', 'https://nagad.com.bd', 'পেমেন্ট ও ব্যাংকিং', 'ডাক বিভাগের ডিজিটাল লেনদেন ও মোবাইল ব্যাংকিং সেবা।'],
     ['রকেট (Rocket - DBBL)', 'https://www.dutchbanglabank.com/rocket/rocket.html', 'পেমেন্ট ও ব্যাংকিং', 'ডাচ-বাংলা ব্যাংকের মোবাইল ব্যাংকিং ও ইউটিলিটি বিল পেমেন্ট।'],
-    ['সেলফিন (CellFin)', 'https://www.islamibankbd.com', 'পেমেন্ট ও ব্যাংকিং', 'ইসলামী ব্যাংকের জনপ্রিয় ডিজিটাল ওয়ালেট ও ব্যাংকিং অ্যাপ।'],
+    ['セルフィン (CellFin)', 'https://www.islamibankbd.com', 'পেমেন্ট ও ব্যাংকিং', 'ইসলামী ব্যাংকের জনপ্রিয় ডিজিটাল ওয়ালেট ও ব্যাংকিং অ্যাপ।'],
 
     // === ইউটিলিটি, টুলস ও টাইপিং ===
     ['ঝাপসা ছবি সোজা/ক্লিয়ার করার লিংক', 'https://www.cutout.pro/photo-enhancer-sharpener-upscaler/upload', 'ইউটিলিটি ও টুলস', 'Cutout Pro - ঝাপসা ছবিকে ক্লিয়ার এবং হাই রেজোলিউশন করার এআই টুল।'],
@@ -84,7 +88,7 @@ $default_links = [
     ['Learn Typing', 'https://www.learntyping.org', 'ইউটিলিটি ও টুলস', 'নতুনদের জন্য একদম শুরু থেকে টাইপিং শেখার অনলাইন গাইড।'],
     ['অনলাইন ভয়েস টাইপিং ডক', 'https://docs.google.com/document/d/1q6mcNDT9jweMBJEv2f0KDpjRlbocQShaTU6_Yn7DRcl/edit', 'ইউটিলিটি ও টুলস', 'গুগল ডক ভয়েস টাইপিং এবং প্র্যাকটিস লিংক।'],
 
-    // === ソフトওয়্যার ডাউনলোড উৎস ===
+    // === সফটওয়্যার ডাউনলোড উৎস ===
     ['GetIntoPC Free Utilities', 'https://getintopc.com/softwares/utilities/everything-free-download/', 'সফটওয়্যার ডাউনলোড', 'কম্পিউটারের সব ধরনের প্রয়োজনীয় ক্র্যাক সফটওয়্যার ডাউনলোডের মেইন ওয়েবসাইট।'],
     ['Ninite App Installer', 'https://ninite.com/', 'Annyanno', 'এক ক্লিকে কম্পিউটারের সব দরকারি ব্রাউজার ও রানটাইম অ্যাপস একসাথে ডাউনলোড করার সাইট।'],
 
@@ -100,24 +104,24 @@ $default_links = [
     ['DALL-E 3 (OpenAI)', 'https://openai.com/dall-e-3', 'Annyanno', 'টেক্সট থেকে ফটো-রিয়েলিস্টিক ইমেজ তৈরি করে, ChatGPT এর সাথেও ইন্টিগ্রেটেড।'],
     ['Adobe Firefly', 'https://adobe.com/firefly', 'Annyanno', 'ডিজাইন ও ব্র্যান্ডিং ফোকাসড জেনারেটিভ এআই, ফটোশপ ইন্টিগ্রেটেড।'],
     ['Canva AI Image Generator', 'https://canva.com/ai-image-generator', 'ক্রিয়েটিভ ও এআই টুলস', 'সোশ্যাল মিডিয়া ও মার্কেটিং ডিজাইনের জন্য দ্রুত ইমেজ জেনারেটর।'],
-    ['ElevenLabs', 'https://elevenlabs.io', 'Annyanno', 'ন্যাচারাল-সাউন্ডিং ভয়েস ক্লোনিং ও প্রফেশনাল টেক্সট-টু-স্পিচ এআই।'],
+    ['ElevenLabs', 'https://elevenlabs.io', 'Annyanno', 'ইউনিক ভয়েস ক্লোনিং ও প্রফেশনাল টেক্সট-টু-স্পিচ এআই।'],
     ['Murf AI', 'https://murf.ai', 'Annyanno', 'বিজ্ঞাপন, ই-লার্নিং ও প্রফেশনাল ভয়েসওভার তৈরির জন্য উপযোগী টুল।'],
     ['Play.ht', 'https://play.ht', 'Annyanno', 'আর্টিকেলকে প্রফেশনাল অডিওতে রূপান্তর করার মাল্টি-ল্যাঙ্গুয়েজ ওয়ালেট।'],
     ['AIVA Music Composer', 'https://aiva.ai', 'ক্রিয়েটিভ ও এআই টুলস', 'AI মিউজিক কম্পোজার - ২৫০+ স্টাইলে নতুন কপিরাইট-ফ্রি মিউজিক ট্র্যাকার।'],
     ['Soundraw AI', 'https://soundraw.io', 'ক্রিয়েটিভ ও এআই টুলস', 'ব্যাকগ্রাউন্ড মিউজিক, অ্যাড ও ভিডিওর জন্য কাস্টম এআই অডিও জেনারেটর।'],
     ['Runway Gen-2', 'https://runwayml.com/gen-2', 'Annyanno', 'টেক্সট ও ইমেজ থেকে প্রফেশনাল সিনেমাটিক ভিডিও জেনারেশনের এআই।'],
     ['Pika Labs AI', 'https://pikalabsai.net', 'Annyanno', 'টেক্সট থেকে ছোট ভিডিও ক্লিপ ও চমৎকার অ্যানিমেশন তৈরির টুল।'],
-    ['Google Veo 3', 'https://aistudio.google.com/veo-3', 'Annyanno', 'গুগলের হাই-কোয়ালিটি টেক্সট-টু-ভিডিও জেনারেশন এবং নেটিভ অডিও সাপোর্ট।'],
+    ['Google Veo 3', 'https://aistudio.google.com/veo-3', 'Annyanno', 'গুগলের হাই-কোয়ালিটি টেক্সট-টু-ভিডিও জেনারেশন এবং নেティブ অডিও সাপোর্ট।'],
     ['Luma AI Dream Machine', 'https://lumalabs.ai/dream-machine', 'Annyanno', 'রিয়েলিস্টিক ভিডিও এবং ৩ডি (3D) মোশন কনটেন্ট তৈরির পাওয়ারফুল টুল।'],
     ['Synthesia', 'https://synthesia.io', 'Annyanno', 'AI অ্যাভাটার ব্যবহার করে স্বয়ংক্রিয় প্রফেশনাল প্রেজেন্টেশন ভিডিও মেকার।'],
     ['Kling AI', 'https://klingai.com', 'Annyanno', 'সিনেমাটিক হাই-ফিডেলিটি ভিজ্যুয়াল ভিডিও জেনারেশনের আধুনিক প্ল্যাটফর্ম।'],
 
     // === রাকিব ভাইয়ের এক্সক্লুসিভ ড্রাইভ রিসোর্স (অ্যাসেটস ও ড্রাইভ লিংক) ===
-    [' Footbal Live Match, 'https://durbinlive.live/', 'রাকিব ড্রাইভ রিসোর্স', 'এখানে ফুটবল এবং ক্রিকেট এর সকল ম্যাচ লাইভ দেখতে পারবেন সম্পন্ন ফ্রিতে।],
-	[' Footbal Live Match 2, 'https://yosin-tv.org/', 'রাকিব ড্রাইভ রিসোর্স', 'এখানে ফুটবল এবং ক্রিকেট এর সকল ম্যাচ লাইভ দেখতে পারবেন সম্পন্ন ফ্রিতে।],
-	[' সকল সেবা এক সঙ্গে, 'https://www.idcardscannerpro.com/', 'রাকিব ড্রাইভ রিসোর্স', 'এখানে কম্পিউটার দোকানের প্রয়োজনীয় সকল টুলস ফ্রিতে পাওয়া যায়।],
+    ['Footbal Live Match', 'https://durbinlive.live/', 'রাকিব ড্রাইভ রিসোর্স', 'এখানে ফুটবল এবং ক্রিকেট এর সকল ম্যাচ লাইভ দেখতে পারবেন সম্পন্ন ফ্রিতে।'],
+    ['Footbal Live Match 2', 'https://yosin-tv.org/', 'রাকিব ড্রাইভ রিসোর্স', 'এখানে ফুটবল এবং ক্রিকেট এর সকল ম্যাচ লাইভ দেখতে পারবেন সম্পন্ন ফ্রিতে।'],
+    ['সকল সেবা এক সঙ্গে', 'https://www.idcardscannerpro.com/', 'রাکিব ড্রাইভ রিসোর্স', 'এখানে কম্পিউটার দোকানের প্রয়োজনীয় সকল টুলস ফ্রিতে পাওয়া যায়।'],
     ['Question Word File 2024', 'https://drive.google.com/file/d/1yXb5eO0nkX9XGGhcoVuo98BRw5_bq9A1/view?usp=sharing', 'রাকিব ড্রাইভ রিসোর্স', '২০২৪ সালের এডিটেবল কোয়েশ্চেন এমএস ওয়ার্ড ফাইল ব্যাকআপ।'],
-    ['Adobe Premiere Pro CC 2019', 'https://drive.google.com/file/d/1xvPzGa7J6ksRE_zX7ONLaOn31RoSpvE1/view?usp=sharing', 'রাকিব ড্রাইভ রিসোর্স', 'ভিডিও এডিটিং সফটওয়্যার অ্যাডোবি প্রিমিয়ার প্রো ২০১৯ ইনস্টলার ফাইল।'],
+    ['Adobe Premiere Pro CC 2019', 'https://drive.google.com/file/d/1xvPzGa7J6ksRE_zX7ONLaOn31RoSpvE1/view?usp=sharing', 'রাকিব ড্রাইভ রিসোর্স', 'ভিдео এডিটিং সফটওয়্যার অ্যাডোবি প্রিমিয়ার প্রো ২০১৯ ইনস্টলার ফাইল।'],
     ['Adobe Premiere Pro 2022 v22.6.2', 'https://drive.google.com/file/d/1HPAUMqhgH2ktNllOjK5BPSSOpPHpOfTa/view?usp=sharing', 'রাকিব ড্রাইভ রিসোর্স', 'অ্যাডোবি প্রিমিয়ার প্রো ২০২২ ক্র্যাক ও ফুল ইনস্টলেশন ফাইল।'],
     ['Toshiba e-Studio 2523AD Printer Driver', 'https://drive.google.com/file/d/1618s-YK_pXrnyxUVjKzPceHIOKcLIeuD/view?usp=sharing', 'রাকিব ড্রাইভ রিসোর্স', 'তোশিবা ২৫২৩এডি প্রিন্টার এবং ফটোকপিয়ার অফিশিয়াল উইন্ডোজ ড্রাইভার।'],
     ['Toshiba 2523A Basic Driver', 'https://drive.google.com/file/d/16jIJjRJU_VVFTyBjn0AJd-iP-CnoHKv-/', 'রাকিব ড্রাইভ রিসোর্স', 'তোশিবা ২৫২৩এ মডেলের স্ট্যান্ডার্ড প্রিন্ট ও স্ক্যানার ড্রাইভার।'],
@@ -160,7 +164,7 @@ $default_links = [
     ['ফেসবুক হ্যাকিং প্রটেকশন (২১টি ভিডিও)', 'https://drive.google.com/drive/folders/1NHtQ-qwOCbQdTWVK0Q02RDFlHsiwElQs', 'প্রিমিয়াম ভিডিও কোর্স', 'সোশ্যাল মিডিয়া সিকিউরিটি, রিকভারি ও অ্যাকাউন্ট সিকিউর করার ২১টি ভিডিও।'],
     ['ওয়াইফাই হ্যাকিং ও সিকিউরিটি কোর্স', 'https://drive.google.com/drive/folders/1tgkKt4lSpXD3GnMQRgUb4bbtlmpP9XOE', 'প্রিমিয়াম ভিডিও কোর্স', 'নেটওয়ার্ক সিকিউরিটি এবং ওয়াইফাই পাসওয়ার্ড টেস্ট পেনিট্রেশন কমপ্লিট কোর্স।'],
     ['অ্যান্ড্রয়েড হ্যাকিং ও ওএস সিকিউরিটি', 'https://drive.google.com/drive/folders/1_G6kt5leGkmzMs_hveS0oUya591gVso2', 'প্রিমিয়াম ভিডিও কোর্স', 'মোবাইল সিকিউরিটি, ম্যালওয়্যার অ্যানালাইসিস ও প্রটেকশনের ২৭টি প্রিমিয়াম ভিডিও।'],
-    ['Blackhat Money Making Methods', 'https://mega.nz/folder/FlJkgBxT#DCpPhtQ3phMjuK4iHnu3jw', 'প্রিমিয়াম ভিডিও কোর্স', 'ব্ল্যাকহ্যাট মার্কেটিং ও অ্যাডভান্সড অনলাইন ট্রাফিক আর্নিং সিক্রেট ফাইল।'],
+    ['Blackhat Money Making Methods', 'https://mega.nz/folder/FlJkgBxT#DCpPhtQ3phMjuK4iHnu3jw', 'প্রিমিয়াম ভিডিও কোর্স', 'ब्लैकहैट मार्केटिंग ও অ্যাডভান্সড অনলাইন ট্রাফিক আর্নিং সিক্রেট ফাইল।'],
     ['অ্যান্ড্রয়েড অ্যাপ ডেভেলপমেন্ট (৫৮টি ভিডিও)', 'https://drive.google.com/drive/folders/15DZTb3kraSVCRRQnk3duOz1sPPcrK0Ti', 'প্রিমিয়াম ভিডিও কোর্স', 'জাভা/কোটলিন ব্যবহার করে অ্যান্ড্রোয়েড অ্যাপ মেকিংয়ের ৫৮টি ভিডিও ক্লাস।'],
     ['এইচটিএমএল, সিএসএস ও বুটস্ট্র্যাপ', 'https://drive.google.com/drive/folders/1EcHwyVbD1F_JQ-0y5bqO9aU-Oaxg0wax?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'ওয়েব ডিজাইনের প্রথম ধাপ - HTML5, CSS3 এবং Responsive Bootstrap কোর্স।'],
     ['জাভাস্ক্রিপ্ট (JavaScript) ফুল কোর্স', 'https://drive.google.com/drive/folders/1KxXXU8w6OcXzvIjV_T7erG1fqxJKoLss?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'লজিক্যাল প্রোগ্রামিং ও ডাইনামিক ফ্রন্টএন্ডের জন্য জাভাস্ক্রিপ্ট ভিডিও ল্যাব।'],
@@ -168,15 +172,21 @@ $default_links = [
     ['SQL Database Optimization', 'https://drive.google.com/drive/folders/1vRS2BslS5MI5c0DNMpQLzm_InNkzQT1p?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'রিলেশনাল ডাটাবেজ, কুয়েরি ডিজাইন ও স্ট্রাকচার্ড কুয়েরি ল্যাঙ্গুয়েজ কোর্স।'],
     ['Django Python Backend Framework', 'https://drive.google.com/drive/folders/1b8OFe1cmcUi4Cl-AWG2lRP4uD3sgyF3E?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'পাইথন জ্যাঙ্গো ফ্রেমওয়ার্ক দিয়ে ফুল স্ট্যাক ওয়েব ব্যাকএন্ড ডেভেলপমেন্ট।'],
     ['React For Frontend Development', 'https://drive.google.com/drive/folders/1BOS2dzJ7afiY1Wu4khECM3sKweg3bGCP?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'সিঙ্গেল পেজ অ্যাপ্লিকেশন ও মডার্ন ইউজার ইন্টারফেস তৈরির রিয়্যাক্ট জেএস কোর্স।'],
-    ['ওয়ার্ডপ্রেস থিম ডেভেলপমেন্ট', 'https://drive.google.com/drive/folders/1uM1-onL3yMGJOq7yBzmqOiwPDaFTueZt?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'কাস্টম কোডিং দিয়ে থিম ও প্লাগইন বানানোর ৪০টি অ্যাডভান্সড ভিডিও টিউটোরিয়াল।'],
+    ['ওয়ার্ডпресс থিম ডেভেলপমেন্ট', 'https://drive.google.com/drive/folders/1uM1-onL3yMGJOq7yBzmqOiwPDaFTueZt?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'কাস্টম কোডিং দিয়ে থিম ও প্লাগইন বানানোর ৪০টি অ্যাডভান্সড ভিডিও টিউটোরিয়াল।'],
     ['ওয়েব ডিজাইন প্রফেশনাল (৩৩টি ভিডিও)', 'https://drive.google.com/drive/folders/1nNo3NiF6gfoCllRJlUH4JxW0vH6oYnLk?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'ইউআই টেমপ্লেট থেকে পিএসডি টু এইচটিএমএল কনভার্সনের ৩৩টি লাইভ প্রজেক্ট ক্লাস।'],
     ['গুগল টপ র‍্যাঙ্কিং এসইও মেথড', 'https://drive.google.com/open?id=1OmDFvSnAgI9-DCF-T2OvVe0tdTzAKYUZ', 'প্রিমিয়াম ভিডিও কোর্স', 'যেকোনো ওয়েবসাইটকে গুগলের প্রথম পাতায় র‍্যাঙ্ক করানোর প্রফেশনাল টেকনিক।'],
     ['সুন্দর ও দ্রুত হাতের লেখা (৬৯টি ভিডিও)', 'https://drive.google.com/drive/u/0/folders/1S31Ukn2vC71otcA7VSq2dlE9vauuxsOy', 'প্রিমিয়াম ভিডিও কোর্স', 'হাতের লেখা আকর্ষণীয় ও দ্রুত করার প্র্যাকটিস টিউটোরিয়াল কালেকশন।'],
     ['অটোক্যাড (AutoCAD) ২ডি ও ৩ডি কোর্স', 'https://drive.google.com/drive/folders/1rgrSJhAFm3X_kli1wGm4b7V20slfKo4C?usp=sharing', 'প্রিমিয়াম ভিডিও কোর্স', 'ইঞ্জিনিয়ারিং ও আর্কিটেকচারাল ফ্লোর প্ল্যানিং অটোক্যাড কমপ্লিট মডিউল।'],
-    ['কনটেন্ট ক্রিয়েটর মাস্টারক্লাস', 'https://drive.google.com/drive/mobile/folders/1KtIcE9xwFwXghRUmTJdH2YyFMr5WoI1b', 'প্রিমিয়াম ভিডিও কোর্স', 'সোশ্যাল মিডিয়া ও প্রফেশনাল ভিডিও কনটেন্ট ক্রিয়েশন কমপ্লিট মেথড।']
+    ['কনটেন্ট ক্রিয়েটর মাস্টারক্লাস', 'https://drive.google.com/drive/mobile/folders/1KtIcE9xwFwXghRUmTJdH2YyFMr5WoI1b', 'প্রিমিয়াম ভিডিও কোর্স', 'সো셜 মিডিয়া ও প্রফেশনাল ভিডিও কন্টেন্ট ক্রিয়েশন কমপ্লিট মেথড।'],
+
+    // === ই-কমার্স ও শপিং ===
+    ['দারাজ বাংলাদেশ (Daraz)', 'https://www.daraz.com.bd', 'ই-কমার্স ও শপিং', 'বাংলাদেশের অন্যতম বৃহৎ অনলাইন শপিং মল ও মার্কেটপ্লেস।'],
+    ['রকমারি ডট কম', 'https://www.rokomari.com', 'ই-কমার্স ও শপিং', 'বই, ইলেকট্রনিক্স ও নানাবিধ পণ্য কেনার জনপ্রিয় ই-কমার্স সাইট।'],
+    ['চালডাল অনলাইন গ্রোসারি', 'https://chaldal.com', 'ই-কমার্স ও শপিং', 'নিত্যপ্রয়োজনীয় মুদি সামগ্রী ঘরে বসে অর্ডারের অনলাইন শপ।'],
+    ['Pickaboo', 'https://www.pickaboo.com', 'ই-কমার্স ও শপিং', 'অরিজিনাল মোবাইল, গ্যাজেট ও ইলেকট্রনিক্স সামগ্রীর ই-কমার্স।']
 ];
 
-// লুপ চালিয়ে ডেটাবেজে ডুপ্লিকেট চেক করে ইনসার্ট করা
+// ৪. লুপ চালিয়ে ডেটাবেজে ডুপ্লিকেট চেক করে ইনসার্ট করা
 $inserted = 0;
 foreach ($default_links as $link) {
     $name = pg_escape_string($conn, $link[0]);
@@ -194,47 +204,7 @@ foreach ($default_links as $link) {
 
 echo "<div style='text-align:center; margin-top:60px; font-family:sans-serif;'>
         <h1 style='color:#2563eb;'>🚀 ডাটাবেজ আপডেট সম্পূর্ণ সফল!</h1>
-        <p style='color:#64748b; font-size:16px;'>পিডিএফ এবং টেক্সট ফাইলের শতভাগ নিখুঁত মিল রেখে মোট <b>$inserted টি</b> লিংক ডাটাবেজে রেকর্ড করা হয়েছে।</p>
+        <p style='color:#64748b; font-size:16px;'>পিডিএফ এবং টেক্সট ফাইলের শতভাগ নিখুঁত মিল রেখে মোট <b>$inserted টি</b> নতুন লিংক ডাটাবেজে রেকর্ড করা হয়েছে।</p>
         <a href='index.php' style='display:inline-block; margin-top:20px; background:#2563eb; color:#fff; padding:12px 24px; text-decoration:none; border-radius:12px; font-weight:bold;'>মেইন প্রফেশনাল সাইট দেখুন ➔</a>
-      </div>";
-?>
-    ['Web Based Result', 'https://eboardresults.com', 'শিক্ষা ও রেজাল্ট', 'জেলা বা প্রতিষ্ঠান ভিত্তিক বিশদ রেজাল্ট দেখার অনলাইন মাধ্যম।'],
-    ['একাদশে ভর্তি পোর্টাল', 'http://xiclassadmission.gov.bd', 'শিক্ষা ও রেজাল্ট', 'কলেজে একাদশ শ্রেণিতে অনলাইনের মাধ্যমে ভর্তির আবেদন সাইট।'],
-    ['মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর', 'https://dshe.gov.bd', 'শিক্ষা ও রেজাল্ট', 'শিক্ষা সংক্রান্ত নোটিশ ও নির্দেশনাবলী দেখার সরকারি সাইট।'],
-
-    // পেমেন্ট ও ব্যাংকিং
-    ['বিকাশ (bKash)', 'https://www.bkash.com', 'পেমেন্ট ও ব্যাংকিং', 'বাংলাদেশের সবচেয়ে বড় মোবাইল ফিনান্সিয়াল সার্ভিস।'],
-    ['নগদ (Nagad)', 'https://nagad.com.bd', 'পেমেন্ট ও ব্যাংকিং', 'ডাক বিভাগের ডিজিটাল লেনদেন ও মোবাইল ব্যাংকিং সেবা।'],
-    ['রকেট (Rocket - DBBL)', 'https://www.dutchbanglabank.com/rocket/rocket.html', 'পেমেন্ট ও ব্যাংকিং', 'ডাচ-বাংলা ব্যাংকের মোবাইল ব্যাংকিং ও ইউটিলিটি বিল পেমেন্ট।'],
-    ['সেলফিন (CellFin)', 'https://www.islamibankbd.com', 'পেমেন্ট ও ব্যাংকিং', 'ইসলামী ব্যাংকের জনপ্রিয় ডিজিটাল ওয়ালেট ও ব্যাংকিং অ্যাপ।'],
-
-    // ই-কমার্স ও শপিং
-    ['দারাজ বাংলাদেশ (Daraz)', 'https://www.daraz.com.bd', 'ই-কমার্স ও শপিং', 'বাংলাদেশের অন্যতম বৃহৎ অনলাইন শপিং মল ও মার্কেটপ্লেস।'],
-    ['রকমারি ডট কম', 'https://www.rokomari.com', 'ই-কমার্স ও শপিং', 'বই, ইলেকট্রনিক্স ও নানাবিধ পণ্য কেনার জনপ্রিয় ই-কমার্স সাইট।'],
-    ['চালডাল অনলাইন গ্রোসারি', 'https://chaldal.com', 'ই-কমার্স ও শপিং', 'নিত্যপ্রয়োজনীয় মুদি সামগ্রী ঘরে বসে অর্ডারের অনলাইন শপ।'],
-    ['Pickaboo', 'https://www.pickaboo.com', 'ই-কমার্স ও শপিং', 'অরিজিনাল মোবাইল, গ্যাজেট ও ইলেকট্রনিক্স সামগ্রীর ই-কমার্স।'],
-    
-    // অন্যান্য
-    ['বিআরটিএ সেবা পোর্টাল', 'https://bsp.brta.gov.bd', 'অন্যান্য দরকারি লিংক', 'ড্রাইভিং লাইসেন্স ও বাইক/গাড়ির রেজিস্ট্রেশন চেক করার পোর্টাল।'],
-    ['বাংলাদেশ রেলওয়ে (টিকিট)', 'https://eticket.railway.gov.bd', 'Annyanno', 'অনলাইনে ট্রেনের সিট সিলেক্ট করে টিকিট কাটার অফিশিয়াল সাইট।'],
-    ['অনলাইন জিডি (BD Police)', 'https://gd.police.gov.bd', 'অন্যান্য দরকারি লিংক', 'থানায় না গিয়ে অনলাইনে ঘরে বসে সাধারণ ডায়েরি বা GD করার অ্যাপ।']
-];
-
-// ডেটা ডুপ্লিকেট না করে ইনসার্ট করা
-foreach ($default_links as $link) {
-    $name = pg_escape_string($conn, $link[0]);
-    $url = pg_escape_string($conn, $link[1]);
-    $cat = pg_escape_string($conn, $link[2]);
-    $desc = pg_escape_string($conn, $link[3]);
-    
-    $check = pg_query($conn, "SELECT 1 FROM site_links WHERE site_url='$url'");
-    if (pg_num_rows($check) == 0) {
-        pg_query($conn, "INSERT INTO site_links (site_name, site_url, category, description) VALUES ('$name', '$url', '$cat', '$desc')");
-    }
-}
-
-echo "<div style='text-align:center; margin-top:50px; font-family:sans-serif;'>
-        <h1 style='color:#10b981;'>🔥 পারফেক্ট! সব লিংক ডাটাবেজে যুক্ত করা হয়েছে!</h1>
-        <p>এখন আপনার মেইন সাইটে যান, সব লিংক প্রফেশনাল লুকে দেখতে পাবেন।</p>
       </div>";
 ?>
