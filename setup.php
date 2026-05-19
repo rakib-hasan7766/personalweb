@@ -1,22 +1,18 @@
 <?php
-// Render থেকে পাওয়া আপনার External Database URL টি নিচে বসাবেন
-$db_url = "postgres://your_user:your_password@your_host.render.com/your_dbname";
+$host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; 
+$user = "perwebb"; 
+$password = "NGeh1PNCgSo3e36xH5oTrQqUBFPXMsx3"; 
+$dbname = "perweb"; 
+$port = "5432"; 
 
-$db_config = parse_url($db_url);
-$host = $db_config['host'];
-$user = $db_config['user'];
-$password = $db_config['pass'];
-$dbname = ltrim($db_config['path'], '/');
-$port = $db_config['port'];
-
-$connection_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
+$connection_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 $conn = pg_connect($connection_string);
 
 if (!$conn) {
     die("Database Connection Failed!");
 }
 
-// ক্যাটাগরি এবং লিংক জমার টেবিল তৈরি করার কুয়েরি
+// টেবিল তৈরি করার কুয়েরি (বাকি অংশ আগের মতোই থাকবে)
 $sql = "
 CREATE TABLE IF NOT EXISTS site_links (
     id SERIAL PRIMARY KEY,
@@ -30,9 +26,7 @@ CREATE TABLE IF NOT EXISTS site_links (
 
 if (pg_query($conn, $sql)) {
     echo "<h1>অভিনন্দন! সেবা পোর্টালের ডাটাবেজ টেবিল সফলভাবে তৈরি হয়েছে।</h1>";
-    echo "<p>এখন আপনি এই ফাইলটি ব্রাউজারে একবার রান করার পর গিটহাব থেকে ডিলিট বা রিনেম করে দিতে পারেন নিরাপত্তার জন্য।</p>";
 } else {
     echo "এরর হয়েছে: " . pg_last_error($conn);
 }
-?>
 ?>
