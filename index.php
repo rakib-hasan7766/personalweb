@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
 
-    <header class="bg-gradient-to-r blue-600 to-indigo-700 text-white text-center py-8 shadow-md mb-8">
+    <header class="bg-blue-600 text-white text-center py-8 shadow-md mb-8">
         <h1 class="text-4xl font-extrabold tracking-wide">Easy Buy BD</h1>
         <p class="text-blue-100 mt-2 text-sm md:text-base">আপনার প্রয়োজনীয় সব লিংক এবং ড্যাশবোর্ড একসাথে</p>
     </header>
@@ -16,7 +16,7 @@
     <main class="max-w-6xl mx-auto px-4 pb-16">
 
         <?php
-        // আপনার আগের দরকারি লিংকগুলোর কমপ্লিট অ্যারে লিস্ট (এখানে ডেটাবেজ লাগবে না)
+        // আপনার সবগুলো লিংক এখানে অ্যারে আকারে দেওয়া হলো
         $site_links = [
             [
                 "name" => "Easy Buy BD - Main Site",
