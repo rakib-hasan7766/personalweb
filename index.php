@@ -1,6 +1,7 @@
 <?php
-// ১. ডাটাবেজ কানেকশন (PostgreSQL)
-$host = "dpg-d85q0mnavr4c73d62fog-a"; 
+<?php
+// ১. ডাটাবেজ কানেকশন (সংশোধিত এক্সটার্নাল হোস্টসহ)
+$host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; // এক্সটার্নাল পাবলিক হোস্ট এড্রেস
 $user = "perwebb"; 
 $password = "NGeh1PNCgSo3e36xH5oTrQqUBFPXMsx3"; 
 $dbname = "perweb"; 
@@ -10,8 +11,10 @@ $connection_string = "host=$host port=$port dbname=$dbname user=$user password=$
 $conn = pg_connect($connection_string);
 
 if (!$conn) { 
-    die("Database Connection Failed!"); 
+    die("Database Connection Failed! Please check your External Host configurations."); 
 }
+
+// বাকি কোড আগের মতোই থাকবে...
 
 // ২. ডাটাবেজে নতুন লিংক সেভ করার কোর লজিক
 $message = "";
