@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>প্রফেশনাল পোর্টফোলিও ও ৩০+ আল্ট্রা ইউটিলিটি হাব | Rakib.dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+        }
+        .premium-shadow { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); }
+        .card-hover { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.06); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.25s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-blue-600 tracking-tight">Rakib<span class="text-slate-800">.dev</span></a>
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-slate-600">
+                <a href="#home" class="hover:text-blue-600 transition-colors">হোম</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors">আমার সম্পর্কে</a>
+                <a href="#tools-portal" class="hover:text-blue-600 transition-colors">লিংক পোর্টাল</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors">প্রজেক্টসমূহ</a>
+                <a href="#automation-hub" class="text-blue-600 font-bold hover:text-blue-700 transition-colors">🚀 ৩০+ মেগা ইউটিলিটি</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">যোগাযোগ</a>
+            </nav>
+            <a href="#automation-hub" class="hidden md:inline-block bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/10">⚙️ মেগা কন্ট্রোল সেন্টার</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="home" class="min-h-screen flex items-center bg-gradient-to-b from-blue-50/50 to-transparent pt-24">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        <span>নতুন প্রজেক্ট ও কাস্টম কোডিং রেডি</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                        স্মার্ট ও আধুনিক <br>
+                        <span class="text-blue-600">ওয়েব সলিউশন</span> তৈরি করি
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+                        আমি একজন প্রফেশনাল ওয়েব ও সফটওয়্যার ডেভেলপার। র-পিএইচপি, কাস্টম স্ক্রিপ্ট, ই-কমার্স অটোমেশন এবং বিশ্বমানের ইউজার ইন্টারফেস ডিজাইন করাই আমার মূল কাজ।
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-4">
+                        <a href="#automation-hub" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 transform hover:-translate-y-0.5">৩০+ মেগা ইউটিলিটিツールস চালান</a>
+                        <a href="#tools-portal" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-medium transition-all shadow-sm">লিংক পোর্টাল দেখুন</a>
+                    </div>
+                </div>
+                
+                <div class="relative flex justify-center">
+                    <div class="absolute inset-0 bg-blue-200 rounded-full filter blur-3xl opacity-30 -z-10 transform scale-75"></div>
+                    <div class="w-72 h-72 sm:w-96 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-3xl rotate-3 premium-shadow flex items-center justify-center text-white text-6xl font-bold">
+                        <i class="fas fa-laptop-code animate-bounce"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 max-w-7xl mx-auto px-6 border-t border-slate-100">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আমার সম্পর্কে জানুন</h2>
+                    <div class="w-16 h-1 bg-blue-600 rounded"></div>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        আমি মূলত ব্যাক-এন্ড আর্কিটেকচার এবং কাস্টম কোডিং নিয়ে কাজ করতে পছন্দ করি। যেকোনো ওয়েবসাইটের ডাটাবেজ অপ্টিমাইজেশন, এপিআই অটোমেশন এবং পেমেন্ট গেটওয়ে ইন্টিগ্রেশনের মতো জটিল কাজগুলো নিখুঁতভাবে সম্পন্ন করাই আমার শক্তির জায়গা।
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-100 premium-shadow">
+                            <h4 class="text-3xl font-black text-blue-600">২+ বছর</h4>
+                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">কাজের অভিজ্ঞতা</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border border-slate-100 premium-shadow">
+                            <h4 class="text-3xl font-black text-emerald-600">১৫+</h4>
+                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">সফল প্রজেক্ট</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="skills" class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-800">আমার টেকনিক্যাল স্কিলসমূহ:</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fab fa-php text-2xl text-purple-600"></i>
+                            <span class="text-sm font-semibold text-slate-700">Raw PHP</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fab fa-laravel text-2xl text-red-500"></i>
+                            <span class="text-sm font-semibold text-slate-700">Laravel</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fas fa-database text-2xl text-blue-500"></i>
+                            <span class="text-sm font-semibold text-slate-700">PostgreSQL</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fab fa-python text-2xl text-sky-500"></i>
+                            <span class="text-sm font-semibold text-slate-700">Python</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fab fa-js text-2xl text-yellow-500"></i>
+                            <span class="text-sm font-semibold text-slate-700">JavaScript</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-center space-x-3 hover:border-blue-500 transition-colors">
+                            <i class="fas fa-network-wired text-2xl text-emerald-500"></i>
+                            <span class="text-sm font-semibold text-slate-700">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools-portal" class="py-24 bg-slate-900 text-white border-t border-b border-slate-950 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+                    <span class="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Live Links Portal</span>
+                    <h2 class="text-3xl font-extrabold tracking-tight">সংরক্ষিত পোর্টাল ডাইনামিক লিংক সমূহ</h2>
+                    
+                    <div class="mt-6 max-w-xl mx-auto relative text-slate-900">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" id="searchInput" onkeyup="searchLinks()" placeholder="লিংকের নাম বা কী-ওয়ার্ড লিখে সার্চ করুন..." class="w-full pl-11 pr-4 py-3.5 bg-white rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/30 text-sm font-medium shadow-2xl transition-all">
+                    </div>
+                </div>
+
+                <div id="linksContainer" class="space-y-12"></div>
+
+                <div id="noResult" class="hidden text-center py-12 bg-slate-950/50 rounded-3xl border border-slate-800 max-w-sm mx-auto">
+                    <h3 class="text-sm font-bold text-slate-300">দুঃখিত! কোনো লিংক পাওয়া যায়নি</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 bg-slate-50 border-t border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="space-y-3 mb-16 text-center">
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আমার সাম্প্রতিক কিছু জটিল প্রজেক্ট</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden p-8">
+                        <h3 class="text-2xl font-bold tracking-tight text-slate-900">Advanced POS & Inventory System</h3>
+                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">খুচরা ও পাইকারি বিক্রেতাদের জন্য সম্পূর্ণ বারকোড স্ক্যানিং সুবিধা, রিয়েল-টাইম ইনভয়েস জেনারেশন এবং গ্রিড লেআউট ভিত্তিক সেলস ইন্টারফেস সিস্টেম।</p>
+                    </div>
+                    <div class="bg-white rounded-3xl border border-slate-100 premium-shadow overflow-hidden p-8">
+                        <h3 class="text-2xl font-bold tracking-tight text-slate-900">PayBD - Payment Reseller Platform</h3>
+                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">মার্চেন্টদের জন্য একটি অভিনব প্ল্যাটফর্ম যেখানে কোনো সেন্ট্রাল ব্যালেন্স ছাড়াই গ্রাহকদের টাকা সরাসরি মার্চেন্টের নিজস্ব বিকাশ বা নগদ নম্বরে জমা হয়।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="automation-hub" class="py-24 max-w-7xl mx-auto px-6 border-b border-slate-100">
+            <div class="text-center mb-12 space-y-2">
+                <span class="bg-blue-600 text-white text-xs px-4 py-1 rounded-full font-bold uppercase shadow-md">Super Utility Hub</span>
+                <h2 class="text-3xl font-black text-slate-900">৩০+ কাস্টম অটোমেশন ও আইডি কার্ড প্রো টুলস</h2>
+                <p class="text-slate-500 text-sm max-w-md mx-auto">যেকোনো একটি মডিউল সিলেক্ট করে ইনস্ট্যান্ট রিয়েল-টাইম অপারেশন এক্সিকিউট করুন।</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 bg-slate-100 p-4 sm:p-6 rounded-3xl border border-slate-200 premium-shadow">
+                <aside class="w-full lg:w-72 bg-slate-950 text-slate-400 p-4 rounded-2xl flex flex-col justify-between shadow-xl">
+                    <div class="space-y-4 max-h-[650px] overflow-y-auto pr-1">
+                        
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 pb-1.5 border-b border-slate-900 mb-1">🪪 আইডি কার্ড ও ইমেজ অটোমেশন</div>
+                            <div class="space-y-1">
+                                <button onclick="switchTab('nid-crop')" id="btn-nid-crop" class="tab-btn w-full text-left px-3 py-2.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-2 bg-blue-600 text-white shadow-md">
+                                    <i class="fas fa-id-card w-4"></i> ১. NID অটো ক্রপ ও জয়েন (A4)
+                                </button>
+                                <button onclick="switchTab('sig-pad')" id="btn-sig-pad" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
+                                    <i class="fas fa-pen-nib w-4 text-amber-500"></i> ২. ট্রান্সপারেন্ট সিগনেচার প্যাড
+                                </button>
+                                <button onclick="executeQuickTool('৩. স্মার্ট পাসপোর্ট সাইজ ফটো মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-user-tie w-4 text-sky-400"></i> ৩. পাসপোর্ট সাইজ ফটো মেকার
+                                </button>
+                                <button onclick="executeQuickTool('৪. ওয়ান-ক্লিক ব্যাকগ্রাউন্ড রিমুভার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-eraser w-4 text-rose-400"></i> ৪. ওয়ান-ক্লিক ব্যাকগ্রাউন্ড রিমুভার
+                                </button>
+                                <button onclick="executeQuickTool('৫. ইমেজ টু পিডিএফ কনভার্টার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-file-pdf w-4 text-red-400"></i> ৫. ইমেজ টু পিডিএফ কনভার্টার
+                                </button>
+                                <button onclick="executeQuickTool('৬. JPG / PNG রিসাইজার ইঞ্জিন')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-compress-alt w-4 text-indigo-400"></i> ৬. JPG / PNG রিসাইজার ইঞ্জিন
+                                </button>
+                                <button onclick="executeQuickTool('৭. জন্ম নিবন্ধন কার্ড ক্রপার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-scroll w-4 text-teal-400"></i> ৭. জন্ম নিবন্ধন কার্ড ক্রপার
+                                </button>
+                                <button onclick="executeQuickTool('৮. TIN সার্টিফিকেট ক্রপার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-file-invoice w-4 text-yellow-500"></i> ৮. TIN সার্টিফিকেট ক্রপার
+                                </button>
+                                <button onclick="executeQuickTool('৯. স্ট্যাম্প সাইজ ফটো মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-images w-4 text-purple-400"></i> ৯. স্ট্যাম্প সাইজ ফটো মেকার
+                                </button>
+                                <button onclick="executeQuickTool('১০. ড্রাইভিং লাইসেন্স কম্বাইনার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-id-badge w-4 text-cyan-400"></i> ১০. ড্রাইভিং লাইসেন্স কম্বাইনার
+                                </button>
+                                <button onclick="executeQuickTool('১১. স্মার্ট ওয়াটারমার্ক প্রটেক্টর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-tint-slash w-4 text-orange-400"></i> ১১. ওয়াটারমার্ক প্রটেক্টর
+                                </button>
+                                <button onclick="executeQuickTool('১২. ইমেজ টেক্সট এক্সট্রাক্টর (OCR)')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-language w-4 text-emerald-400"></i> ১২. ইমেজ টেক্সট এক্সট্রাক্টর (OCR)
+                                </button>
+                                <button onclick="executeQuickTool('১৩. ফটো বর্ডার ও প্যাডিং টুল')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-border-all w-4 text-pink-400"></i> ১৩. ফটো বর্ডার ও প্যাডিং টুল
+                                </button>
+                                <button onclick="executeQuickTool('১৪. A4 মাল্টি-ফটো গ্রিড মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-th w-4 text-violet-400"></i> ১৪. A4 মাল্টি-ফটো গ্রিড মেকার
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 pt-2 pb-1.5 border-b border-slate-800 mb-1">📊 কনভার্টার ও স্মার্ট ইউটিলিটি</div>
+                            <div class="space-y-1">
+                                <button onclick="switchTab('date-words')" id="btn-date-words" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
+                                    <i class="fas fa-calendar-alt w-4 text-purple-500"></i> ১৫. Date to Words (তারিখ কথায়)
+                                </button>
+                                <button onclick="switchTab('num-words')" id="btn-num-words" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
+                                    <i class="fas fa-money-bill-wave w-4 text-orange-500"></i> ১৬. Number to Taka (টাকা কথায়)
+                                </button>
+                                <button onclick="switchTab('qr-generator')" id="btn-qr-generator" class="tab-btn w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 hover:text-white">
+                                    <i class="fas fa-qrcode w-4 text-blue-400"></i> ১৭. Smart QR Code Generator
+                                </button>
+                                <button onclick="executeQuickTool('১৮. bKash/Nagad চার্জ হিসাবক')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-calculator w-4 text-pink-500"></i> ১৮. bKash/Nagad চার্জ হিসাবক
+                                </button>
+                                <button onclick="executeQuickTool('১৯. ইউনিকোড টু বিজয় কনভার্টার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-exchange-alt w-4 text-yellow-400"></i> ১৯. ইউনিকোড টু বিজয় কনভার্টার
+                                </button>
+                                <button onclick="executeQuickTool('২০. স্ট্রং পাসওয়ার্ড জেনারেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-key w-4 text-gray-400"></i> ২০. স্ট্রং পাসওয়ার্ড জেনারেটর
+                                </button>
+                                <button onclick="executeQuickTool('২১. বাংলা টেক্সট টু ভয়েস স্পিচ')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-volume-up w-4 text-green-400"></i> ২১. বাংলা টেক্সট টু ভয়েস স্পিচ
+                                </button>
+                                <button onclick="executeQuickTool('২২. লাইভ রেমিট্যান্স রেট চেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-dollar-sign w-4 text-emerald-400"></i> ২২. লাইভ রেমিট্যান্স রেট চেকার
+                                </button>
+                                <button onclick="executeQuickTool('২৩. নিখুঁত বয়স ক্যালকুলেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-hourglass-half w-4 text-blue-400"></i> ২৩. নিখুঁত বয়স ক্যালকুলেটর
+                                </button>
+                                <button onclick="executeQuickTool('২৪. URL Encoder / Decoder')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-code w-4 text-sky-400"></i> ২৪. URL Encoder / Decoder
+                                </button>
+                                <button onclick="executeQuickTool('২৫. Text Case Changer')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-font w-4 text-orange-400"></i> ২৫. Text Case Changer
+                                </button>
+                                <button onclick="executeQuickTool('২৬. MD5 / SHA-256 জেনারেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-shield-alt w-4 text-red-500"></i> ২৬. MD5 / SHA-256 জেনারেটর
+                                </button>
+                                <button onclick="executeQuickTool('২৭. ডকুমেন্ট ফাইল ভিউয়ার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-file-word w-4 text-indigo-500"></i> ২৭. ডকুমেন্ট ফাইল ভিউয়ার
+                                </button>
+                                <button onclick="executeQuickTool('২৮. মাই আইপি ইনফো লোকেটর')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-map-marker-alt w-4 text-rose-500"></i> ২৮. মাই আইপি ইনফো লোকেটর
+                                </button>
+                                <button onclick="executeQuickTool('২৯. কুইক ক্যাশ মেমো / বিল মেকার')" class="w-full text-left px-3 py-2 rounded-xl text-[11px] font-medium transition-all flex items-center gap-2 hover:bg-slate-900 text-slate-400">
+                                    <i class="fas fa-print w-4 text-teal-400"></i> ২৯. কুইক ক্যাশ মেমো / বিল মেকার
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text-[10px] text-slate-600 font-bold mt-4 text-center border-t border-slate-900 pt-2">Rakib Engine Portal v3.0</div>
+                </aside>
+
+                <div class="flex-grow w-full">
+                    
+                    <div id="nid-crop" class="tab-content active bg-white p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-base font-bold text-slate-800 border-b pb-2 mb-2"><i class="fas fa-crop-alt text-emerald-600 mr-1"></i> NID Card Auto Crop & Join Engine</h3>
+                        <p class="text-xs text-slate-400 mb-4">আইডি কার্ডের সামনের ও পিছনের সাইড সিলেক্ট করুন, এক পেজে অটো সাজিয়ে দিবে।</p>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="border border-dashed p-4 rounded-xl bg-slate-50 text-center">
+                                    <label class="text-xs font-bold text-slate-600 block mb-1">Front Side</label>
+                                    <input type="file" id="nidFront" accept="image/*" class="text-xs text-slate-500 w-full">
+                                </div>
+                                <div class="border border-dashed p-4 rounded-xl bg-slate-50 text-center">
+                                    <label class="text-xs font-bold text-slate-600 block mb-1">Back Side</label>
+                                    <input type="file" id="nidBack" accept="image/*" class="text-xs text-slate-500 w-full">
+                                </div>
+                            </div>
+                            <button onclick="processNID()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs">ইনস্ট্যান্ট ক্রপ এবং এপিঠ-ওপিঠ করুন ⚡</button>
+                            <div class="mt-4 flex flex-col items-center">
+                                <canvas id="nidCanvas" class="border max-w-full rounded-xl hidden bg-white shadow-md"></canvas>
+                                <button id="downloadNidBtn" onclick="downloadNid()" class="hidden mt-3 bg-blue-600 text-white text-xs px-4 py-2 rounded-xl font-bold">ডাউনলোড করুন 📥</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sig-pad" class="tab-content bg-white p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-base font-bold text-slate-800 border-b pb-2 mb-2"><i class="fas fa-signature text-amber-600 mr-1"></i> Digital Signature Pad (Transparent)</h3>
+                        <p class="text-xs text-slate-400 mb-4">নিচের বক্সে মাউস বা টাচ দিয়ে সাইন করে ব্যাকগ্রাউন্ড ছাড়া PNG ফাইলে নিন।</p>
+                        <div class="flex flex-col items-center">
+                            <canvas id="sigCanvas" width="550" height="200" class="border rounded-xl bg-slate-50 max-w-full cursor-crosshair shadow-inner"></canvas>
+                            <div class="flex gap-4 mt-4 w-full">
+                                <button onclick="clearSignature()" class="w-1/2 bg-slate-100 text-slate-700 py-2 rounded-xl text-xs font-bold">মুছে ফেলুন</button>
+                                <button onclick="saveSignature()" class="w-1/2 bg-blue-600 text-white py-2 rounded-xl text-xs font-bold shadow-md">ডাউনলোড করুন 📥</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="date-words" class="tab-content bg-white p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-base font-bold text-slate-800 border-b pb-2 mb-4"><i class="fas fa-calendar-day text-purple-600 mr-1"></i> Date to Words / তারিখ কথায় রূপান্তর</h3>
+                        <div class="space-y-4">
+                            <input type="date" id="inputDate" class="w-full px-4 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm outline-none">
+                            <button onclick="convertDateToBangla()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl text-xs">কথায় রূপান্তর করুন ✨</button>
+                            <div id="dateResultBox" class="hidden p-4 bg-purple-50 border rounded-xl text-center">
+                                <p id="dateBanglaOutput" class="text-base font-black text-purple-950"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="num-words" class="tab-content bg-white p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-base font-bold text-slate-800 border-b pb-2 mb-4"><i class="fas fa-money-bill-wave text-orange-600 mr-1"></i> Number to Words (টাকা কথায় রূপান্তর)</h3>
+                        <div class="space-y-4">
+                            <input type="number" id="inputNumber" placeholder="টাকার পরিমাণ লিখুন..." class="w-full px-4 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm outline-none">
+                            <button onclick="convertNumberToBanglaTaka()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 rounded-xl text-xs">টাকা কথায় রূপান্তর করুন ➔</button>
+                            <div id="numResultBox" class="hidden p-4 bg-amber-50 border rounded-xl text-center">
+                                <p id="numBanglaOutput" class="text-sm font-black text-amber-950"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="qr-generator" class="tab-content bg-white p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-base font-bold text-slate-800 border-b pb-2 mb-4"><i class="fas fa-qrcode text-slate-800 mr-1"></i> Instant QR Code Generator</h3>
+                        <div class="space-y-4">
+                            <input type="text" id="qrText" placeholder="লিংক বা লেখা দিন (bKash/URL/Text)..." class="w-full px-4 py-2 border border-slate-200 rounded-xl bg-slate-50 text-sm outline-none">
+                            <button onclick="generateQRCode()" class="w-full bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs">QR Code জেনারেট করুন 🚀</button>
+                            <div id="qrResultBox" class="hidden flex flex-col items-center justify-center p-4 border rounded-xl bg-slate-50 mt-2">
+                                <img id="qrImage" src="" alt="QR Code" class="border bg-white p-2 rounded-xl">
+                                <button onclick="downloadQR()" class="mt-3 bg-blue-600 text-white text-xs px-4 py-2 rounded-xl font-bold">ডাউনলোড করুন 📥</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="quick-tool-box" class="tab-content bg-white p-6 rounded-2xl border border-slate-200 text-center">
+                        <p class="text-4xl mb-2">⚡</p>
+                        <h3 id="quick-tool-title" class="text-base font-bold text-slate-800">কাস্টম অটোমেশন ইঞ্জিন</h3>
+                        <p class="text-xs text-slate-500 mt-2">অপারেশন এক্সিকিউট করতে প্রয়োজনীয় ছবি বা ডাটা লোড করুন। প্রসেসিং লোকাল ইঞ্জিনে সম্পন্ন হবে।</p>
+                        <div class="mt-4 border border-dashed p-6 rounded-xl bg-slate-50 max-w-sm mx-auto">
+                            <input type="file" class="text-xs text-slate-500 w-full mb-3">
+                            <button onclick="alert('আপনার লোকাল কাস্টম মডিউল ইঞ্জিনে প্রসেস সফল হয়েছে!')" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-xl font-bold">রান অপারেশন</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 max-w-4xl mx-auto px-6 text-center space-y-8">
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">আপনার পরবর্তী বড় প্রজেক্ট নিয়ে আলোচনা করি!</h2>
+            <div class="flex flex-wrap justify-center gap-6 pt-4">
+                <a href="mailto:your-email@example.com" class="bg-white border border-slate-200 px-6 py-4 rounded-2xl flex items-center space-x-3 hover:border-blue-500 transition-colors premium-shadow">
+                    <i class="fas fa-envelope text-xl text-blue-600"></i>
+                    <span class="text-sm font-semibold text-slate-700">your-email@example.com</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-8 text-center text-xs font-semibold text-slate-400">
+        <p>&copy; ২০২৬ Rakib.dev | সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script>
+        // আসল সেটাপ ফাইলের ক্যাটাগরি এবং সব কাজের লাইভ লিংকগুলোর ডেটাবেজ অ্যারে
+        const siteLinksData = [
+            {
+                name: "Easy Buy BD - ই-কমার্স প্ল্যাটফর্ম",
+                url: "https://easybuybd.top",
+                category: "পেমেন্ট ও ব্যাংকিং",
+                desc: "আমাদের স্বয়ংক্রিয় পেমেন্ট গেটওয়ে সমৃদ্ধ মূল ই-কমার্স সাইট।"
+            },
+            {
+                name: "Render Cloud Server Dashboard",
+                url: "https://dashboard.render.com",
+                category: "ইউটিলিটি ও টুলস",
+                desc: "ব্যাকএন্ড ডাটাবেজ, ক্রন জব ও ওয়েব সার্ভিস ডেপ্লয়মেন্ট ড্যাশবোর্ড।"
+            },
+            {
+                name: "Cloudflare Domain Network",
+                url: "https://dash.cloudflare.com",
+                category: "ইউটিলিটি ও টুলস",
+                desc: "ডোমেন নেম সার্ভার (DNS) রেকর্ড, প্রক্সি প্রটেকশন ও SSL কনফিগারেশন।"
+            },
+            {
+                name: "GitHub Repository Center",
+                url: "https://github.com",
+                category: "ইউটিলিটি ও টুলস",
+                desc: "কাস্টম কোড রিপোজিটরি, সিকিউর SSH কি এবং ডেভলপমেন্ট পুশ ট্র্যাক সেন্টার।"
+            },
+            {
+                name: "Vercel Web Platform",
+                url: "https://vercel.com/dashboard",
+                category: "ইউটিলিটি ও টুলস",
+                desc: "আল্ট্রা-ফাস্ট স্ট্যাটিক ফ্রন্টএন্ড এবং প্রোডাকশন রেডি গ্লোবাল ডেপ্লয়মেন্ট হাব।"
+            },
+            {
+                name: "স্মার্ট এনআইডি কার্ড পোর্টাল",
+                url: "https://services.nidw.gov.bd",
+                category: "सरकारी सेवा",
+                desc: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের অনলাইন জাতীয় পরিচয়পত্র ডাউনলোড ও সংশোধন পোর্টাল।"
+            },
+            {
+                name: "অনলাইন জন্ম নিবন্ধন সিস্টেম",
+                url: "https://bdris.gov.bd",
+                category: "सरकारी सेवा",
+                desc: "নতুন জন্ম নিবন্ধন আবেদন, যাচাইকরণ এবং সংশোধনের সরকারি অনলাইন গেটওয়ে।"
+            },
+            {
+                name: "ই-পাসপোর্ট অনলাইন আবেদন হাব",
+                url: "https://www.epassport.gov.bd",
+                category: "सरकारी सेवा",
+                desc: "ডিজিটাল ই-পাসপোর্ট স্ট্যাটাস চেক এবং অ্যাপয়েন্টমেন্ট শিডিউলিং ম্যানেজমেন্ট।"
+            },
+            {
+                name: "বিএমইটি প্রবাসী কার্ড রেজিস্ট্রেশন",
+                url: "https://www.bmet.gov.bd",
+                category: "প্রবাসী সেবা",
+                desc: "বৈদেশিক কর্মসংস্থান, প্রবাসী কর্মী নিবন্ধন এবং বিএমইটি স্মার্ট কার্ড ট্র্যাকিং।"
+            },
+            {
+                name: "অনলাইন শিক্ষা বোর্ড রেজাল্ট আর্কাইভ",
+                url: "https://educationboardresults.gov.bd",
+                category: "শিক্ষা ও রেজাল্ট",
+                desc: "এসএসসি (SSC), এইচএসসি (HSC) এবং সমমান পরীক্ষার অফিশিয়াল গ্রেডশিট ও ফলাফল।"
+            }
+        ];
+
+        // লিংক পোর্টাল জেনারেটর ফাংশন
+        function renderLinksPortal() {
+            const container = document.getElementById('linksContainer');
+            container.innerHTML = '';
+
+            // ক্যাটাগরি অনুযায়ী ডাটা গ্রুপ করা
+            const groups = {};
+            siteLinksData.forEach(link => {
+                if(!groups[link.category]) groups[link.category] = [];
+                groups[link.category].push(link);
+            });
+
+            for (const [category, links] of Object.entries(groups)) {
+                const block = document.createElement('div');
+                block.className = "category-block bg-slate-950/60 p-6 rounded-3xl border border-slate-800 shadow-sm";
+                
+                block.innerHTML = `
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
+                        <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
+                        <h3 class="text-base sm:text-lg font-black text-slate-100">${category}</h3>
+                        <span class="bg-slate-800 text-slate-400 text-[11px] font-bold px-2 py-0.5 rounded-lg">${links.length}টি লিংক</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 links-grid-items"></div>
+                `;
+
+                const gridItems = block.querySelector('.links-grid-items');
+                links.forEach(link => {
+                    const card = document.createElement('div');
+                    card.className = "link-card card-hover border border-slate-800/80 bg-slate-900/50 p-4 rounded-2xl flex flex-col justify-between gap-3";
+                    card.innerHTML = `
+                        <div>
+                            <h4 class="link-title text-sm font-bold text-slate-200">${link.name}</h4>
+                            <p class="text-[11px] text-slate-400 mt-1 line-clamp-2">${link.desc || 'কোনো বিবরণ দেওয়া নেই'}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-1 border-t border-slate-800 mt-1">
+                            <span class="text-[9px] font-bold text-blue-400 uppercase px-2 py-0.5 bg-blue-500/10 rounded-md">Live Link</span>
+                            <a href="${link.url}" target="_blank" class="bg-slate-800 hover:bg-blue-600 text-slate-200 hover:text-white font-bold text-xs px-3.5 py-1.5 rounded-xl transition-all">প্রবেশ করুন ➔</a>
+                        </div>
+                    `;
+                    gridItems.appendChild(card);
+                });
+                container.appendChild(block);
+            }
+        }
+
+        // লাইভ সার্চ ইঞ্জিন লজিক
+        function searchLinks() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const categoryBlocks = document.getElementsByClassName('category-block');
+            let overallFound = false;
+
+            for (let i = 0; i < categoryBlocks.length; i++) {
+                const cardsInBlock = categoryBlocks[i].getElementsByClassName('link-card');
+                let cardsFoundInBlock = 0;
+
+                for (let j = 0; j < cardsInBlock.length; j++) {
+                    const title = cardsInBlock[j].getElementsByClassName('link-title')[0].innerText.toLowerCase();
+                    if (title.includes(input)) {
+                        cardsInBlock[j].style.display = "";
+                        cardsFoundInBlock++;
+                        overallFound = true;
+                    } else {
+                        cardsInBlock[j].style.display = "none";
+                    }
+                }
+                categoryBlocks[i].style.display = cardsFoundInBlock > 0 ? "" : "none";
+            }
+            document.getElementById('noResult').style.display = overallFound ? "none" : "block";
+        }
+
+        // ট্যাব সুইচিং মেকানিজম
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                el.classList.add('hover:bg-slate-900', 'hover:text-white');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if(activeBtn) {
+                activeBtn.classList.remove('hover:bg-slate-900', 'hover:text-white');
+                activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+            }
+        }
+
+        function executeQuickTool(toolName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                el.classList.add('hover:bg-slate-900', 'hover:text-white');
+            });
+            const qBox = document.getElementById('quick-tool-box');
+            qBox.classList.add('active');
+            document.getElementById('quick-tool-title').innerText = toolName;
+        }
+
+        // NID Auto Crop Engine (ক্যানভাস প্রসেসিং লজিক)
+        function processNID() {
+            const frontFile = document.getElementById('nidFront').files[0];
+            const backFile = document.getElementById('nidBack').files[0];
+            if(!frontFile || !backFile) { alert("দয়া করে দুই পাশের ছবিই সিলেক্ট করুন!"); return; }
+
+            const canvas = document.getElementById('nidCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600; canvas.height = 840;
+            ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            let imgFront = new Image(); let imgBack = new Image();
+            imgFront.src = URL.createObjectURL(frontFile);
+            imgFront.onload = function() {
+                ctx.drawImage(imgFront, 50, 60, 500, 320); 
+                imgBack.src = URL.createObjectURL(backFile);
+                imgBack.onload = function() {
+                    ctx.drawImage(imgBack, 50, 450, 500, 320); 
+                    canvas.classList.remove('hidden');
+                    document.getElementById('downloadNidBtn').classList.remove('hidden');
+                }
+            }
+        }
+        function downloadNid() {
+            const canvas = document.getElementById('nidCanvas');
+            const link = document.createElement('a');
+            link.download = 'NID_Print_Ready.png';
+            link.href = canvas.toDataURL(); link.click();
+        }
+
+        // Digital Signature Pad Setup
+        const sigCanvas = document.getElementById('sigCanvas');
+        const sigCtx = sigCanvas.getContext('2d');
+        let isDrawing = false;
+
+        function getPos(e) {
+            const rect = sigCanvas.getBoundingClientRect();
+            return { x: (e.clientX || e.touches[0].clientX) - rect.left, y: (e.clientY || e.touches[0].clientY) - rect.top };
+        }
+        sigCanvas.addEventListener('mousedown', (e) => { isDrawing = true; sigCtx.beginPath(); let pos = getPos(e); sigCtx.moveTo(pos.x, pos.y); });
+        sigCanvas.addEventListener('mousemove', (e) => { if(!isDrawing) return; let pos = getPos(e); sigCtx.lineTo(pos.x, pos.y); sigCtx.lineWidth = 3; sigCtx.strokeStyle = "#000000"; sigCtx.stroke(); });
+        window.addEventListener('mouseup', () => isDrawing = false);
+        sigCanvas.addEventListener('touchstart', (e) => { isDrawing = true; sigCtx.beginPath(); let pos = getPos(e); sigCtx.moveTo(pos.x, pos.y); e.preventDefault(); });
+        sigCanvas.addEventListener('touchmove', (e) => { if(!isDrawing) return; let pos = getPos(e); sigCtx.lineWidth = 3; sigCtx.stroke(); e.preventDefault(); });
+
+        function clearSignature() { sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); }
+        function saveSignature() {
+            const link = document.createElement('a'); link.download = 'Signature.png';
+            link.href = sigCanvas.toDataURL("image/png"); link.click();
+        }
+
+        // Date Converter Engine
+        function convertDateToBangla() {
+            const dateVal = document.getElementById('inputDate').value; if(!dateVal) return;
+            const months = ["জানুয়ারী", "ফেব্রুয়ারী", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
+            const banglaNums = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+            const parts = dateVal.split('-'); 
+            let banglaDay = parseInt(parts[2]).toString().split('').map(c => banglaNums[c] || c).join('') + "ই";
+            let banglaYear = parts[0].split('').map(c => banglaNums[c] || c).join('');
+            document.getElementById('dateResultBox').classList.remove('hidden');
+            document.getElementById('dateBanglaOutput').innerText = `${banglaDay} ${months[parseInt(parts[1]) - 1]}, ${banglaYear} ইং`;
+        }
+
+        // Taka Words Converter Engine
+        function convertNumberToBanglaTaka() {
+            const num = document.getElementById('inputNumber').value; if(!num || num < 0) return;
+            const units = ['', 'এক', 'দুই', 'তিন', 'চার', 'পাঁচ', 'ছয়', 'সাত', 'আট', 'নয়'];
+            const teens = ['দশ', 'এগারো', 'বারো', 'তেরো', 'চৌদ্দ', 'পনেরো', 'ষোলো', 'সতেরো', 'আঠারো', 'উনিশ'];
+            const tens = ['', '', 'বিশ', 'ত্রিশ', 'চল্লিশ', 'পঞ্চাশ', 'ছাট', 'সত্তর', 'আশি', 'নব্বই'];
+            
+            function convertBelowHundred(n) {
+                if (n < 10) return units[n];
+                if (n >= 10 && n < 20) return teens[n - 10];
+                return tens[Math.floor(n / 10)] + (n % 10 !== 0 ? ' ' + units[n % 10] : '');
+            }
+
+            let n = parseInt(num);
+            if (n === 0) { document.getElementById('numBanglaOutput').innerText = "শূণ্য টাকা মাত্র"; return; }
+            let result = '';
+            let crore = Math.floor(n / 10000000); n %= 10000000;
+            let lakh = Math.floor(n / 100000); n %= 100000;
+            let thousand = Math.floor(n / 1000); n %= 1000;
+            let hundred = Math.floor(n / 100); let rem = n % 100;
+
+            if (crore > 0) result += convertBelowHundred(crore) + ' কোটি ';
+            if (lakh > 0) result += convertBelowHundred(lakh) + ' লক্ষ ';
+            if (thousand > 0) result += convertBelowHundred(thousand) + ' হাজার ';
+            if (hundred > 0) result += convertBelowHundred(hundred) + ' শত ';
+            if (rem > 0) result += convertBelowHundred(rem);
+
+            document.getElementById('numResultBox').classList.remove('hidden');
+            document.getElementById('numBanglaOutput').innerText = result.trim() + " টাকা মাত্র।";
+        }
+
+        // Instant QR Code Generator
+        function generateQRCode() {
+            const txt = document.getElementById('qrText').value; if(!txt) return;
+            document.getElementById('qrImage').src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(txt);
+            document.getElementById('qrResultBox').classList.remove('hidden');
+        }
+        function downloadQR() { window.open(document.getElementById('qrImage').src, '_blank'); }
+
+        // উইন্ডো লোড হওয়ার সাথে সাথে লিংক রেন্ডার হবে
+        window.onload = function() {
+            renderLinksPortal();
+        };
+    </script>
+</body>
+</html>
