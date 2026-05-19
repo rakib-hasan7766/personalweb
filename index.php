@@ -1,148 +1,165 @@
 <?php
-include('db.php');
+$host = "dpg-d85q0mnavr4c73d62fog-a.oregon-postgres.render.com"; 
+$user = "perwebb"; 
+$password = "NGeh1PNCgSo3e36xH5oTrQqUBFPXMsx3"; 
+$dbname = "perweb"; 
+$port = "5432"; 
 
-// ডাটাবেজ থেকে ক্যাটাগরি অনুযায়ী সর্ট করে সব লিংক তুলে আনা
-$result = pg_query($conn, "SELECT * FROM site_links ORDER BY category ASC, id DESC");
-$links = pg_fetch_all($result) ?: [];
+$connection_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
+$conn = pg_connect($connection_string);
+
+if (!$conn) { die("Database Connection Failed!"); }
+
+// সব ডেটা তুলে আনা
+$result = pg_query($conn, "SELECT * FROM site_links ORDER BY category, site_name");
+$categories = [];
+
+while ($row = pg_fetch_assoc($result)) {
+    $categories[$row['category']][] = $row;
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BD সেবা পোর্টাল | বাংলাদেশের সব প্রয়োজনীয় ওয়েবসাইট লিংক</title>
+    <title>রিসোর্স ও লিংক পোর্টাল</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f1f5f9; /* হালকা সুন্দর ব্যাকগ্রাউন্ড */
+        }
+    </style>
 </head>
-<body class="bg-[#0f172a] text-slate-200 antialiased font-sans">
+<body class="text-slate-800 antialiased min-h-screen">
 
-    <header class="border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-lg bg-[#0f172a]/80">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-black text-blue-500 tracking-tight flex items-center space-x-2">
-                <span class="bg-blue-600 text-white px-2.5 py-1 rounded-xl text-sm"><i class="fas fa-layer-group"></i></span>
-                <span>BD<span class="text-white font-medium">সেবা.পোর্টাল</span></span>
-            </a>
-            <a href="admin.php" class="bg-slate-800 hover:bg-blue-600 border border-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5">
-                <i class="fas fa-lock text-[10px]"></i>
-                <span>কন্ট্রোল প্যানেল</span>
-            </a>
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-600 tracking-tight flex items-center gap-2">
+                    🌐 <span>রিসোর্স ও লিংক পোর্টাল</span>
+                </h1>
+                <p class="text-xs text-slate-500 mt-0.5">প্রয়োজনীয় সকল ওয়েবসাইট ও ড্রাইভ সোর্স এক জায়গায়</p>
+            </div>
+            
+            <div class="relative w-full sm:w-80">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="text-slate-400 text-sm">🔍</span>
+                </div>
+                <input type="text" id="searchInput" onkeyup="filterLinks()" 
+                       placeholder="খুঁজুন (যেমন: ভিসা, drive, course)..." 
+                       class="w-full pl-9 pr-4 py-2 border border-slate-300 rounded-xl bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-all shadow-sm">
+            </div>
         </div>
     </header>
 
-    <section class="max-w-6xl mx-auto px-6 pt-16 pb-12 text-center space-y-4">
-        <div class="inline-flex items-center space-x-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>১০০% ভেরিফাইড এবং নিরাপদ লিংক কালেকশন</span>
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <div id="noResults" class="hidden text-center py-12">
+            <span class="text-4xl">🔎</span>
+            <h3 class="text-lg font-bold text-slate-700 mt-2">কোনো লিংক পাওয়া যায়নি!</h3>
+            <p class="text-slate-500 text-sm">অনুগ্রহ করে সঠিক বানান দিয়ে আবার চেষ্টা করুন।</p>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-            বাংলাদেশের প্রয়োজনীয় ডিজিটাল সেবা <br><span class="text-transparent bg-clip-text bg-gradient-to-r Hell from-blue-400 to-indigo-500">এখন এক ক্লিকে</span>
-        </h1>
-        <p class="text-slate-400 max-w-xl mx-auto text-xs sm:text-sm font-medium leading-relaxed">
-            সরকারি ই-সার্ভিস, শিক্ষাবোর্ডের রেজাল্ট, অনলাইন ব্যাংকিং কিংবা ই-কমার্স—সব দরকারি ওয়েবসাইটের আসল এড্রেস খুঁজুন ঝামেলা ছাড়াই।
-        </p>
-    </section>
 
-    <main class="max-w-6xl mx-auto px-6 pb-24">
-        <?php if (empty($links)): ?>
-            <div class="text-center py-20 bg-slate-900/50 rounded-3xl border border-dashed border-slate-800">
-                <i class="fas fa-link-slash text-4xl text-slate-700 mb-3"></i>
-                <p class="text-slate-500 text-sm font-medium">কোনো ডেটা পাওয়া যায়নি। অনুগ্রহ করে প্রথমে `setup.php` ফাইলটি ব্রাউজারে রান করুন।</p>
-            </div>
-        <?php else: ?>
-            
-            <?php 
-            $current_cat = "";
-            foreach ($links as $link): 
-                if ($current_cat !== $link['category']): 
-                    $current_cat = $link['category'];
-            ?>
-                <div class="flex items-center space-x-3 mt-12 mb-6">
-                    <span class="h-px w-6 bg-blue-500"></span>
-                    <h2 class="text-md font-black text-white uppercase tracking-wider text-blue-400 flex items-center space-x-2">
-                        <i class="fas fa-folder text-sm text-indigo-400"></i>
-                        <span><?php echo htmlspecialchars($current_cat); ?></span>
+        <?php foreach ($categories as $categoryName => $links): ?>
+            <div class="category-section mb-10" data-category="<?php echo htmlspecialchars($categoryName); ?>">
+                <div class="flex items-center gap-3 mb-4 border-b border-slate-200 pb-2">
+                    <span class="text-xl">📁</span>
+                    <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wide">
+                        <?php echo htmlspecialchars($categoryName); ?>
                     </h2>
-                    <span class="h-px flex-1 bg-slate-800/60"></span>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-blue-100">
+                        <?php echo count($links); ?>টি লিংক
+                    </span>
                 </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <?php endif; ?>
 
-                    <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between group shadow-sm">
-                        <div class="space-y-2.5">
-                            <h3 class="text-md font-bold text-white group-hover:text-blue-400 transition-colors tracking-tight">
-                                <?php echo htmlspecialchars($link['site_name']); ?>
-                            </h3>
-                            <p class="text-slate-400 text-xs leading-relaxed font-medium">
-                                <?php echo htmlspecialchars($link['description'] ?: 'এই ওয়েবসাইটের মাধ্যমে প্রয়োজনীয় অনলাইন সেবা সরাসরি উপভোগ করুন।'); ?>
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800/60 mt-4 flex justify-between items-center">
-                            <span class="text-[10px] text-slate-600 font-mono">
-                                Verified ✔
-                            </span>
-                            <a href="<?php echo htmlspecialchars($link['site_url']); ?>" target="_blank" class="text-xs font-bold text-blue-500 hover:text-blue-400 inline-flex items-center space-x-1 transition-all group-hover:translate-x-1">
-                                <span>সাইটে প্রবেশ করুন</span>
-                                <i class="fas fa-chevron-right text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
-
-            <?php 
-                // পরবর্তী লিংকের আগে গ্রিড ডিভ ক্লোজিং কন্ডিশন চেক করা
-                $next_index = array_search($link, $links) + 1;
-                if ($next_index == count($links) || $links[$next_index]['category'] !== $current_cat):
-                    echo '</div>'; // গ্রিড ডিভ ক্লোজ
-                endif;
-            endforeach; ?>
-
-        <?php endif; ?>
-    </main>
-
-    <footer class="text-center py-8 border-t border-slate-900 text-xs text-slate-600 font-bold bg-slate-950">
-        <p>&copy; ২০২৬ BD সেবা পোর্টাল | ডেভেলপ করেছেন রাকিব হাসান।</p>
-    </footer>
-
-</body>
-</html>
-        <?php if (!$links): ?>
-            <div class="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-200">
-                <i class="fas fa-link-slash text-4xl text-slate-300 mb-3"></i>
-                <p class="text-slate-400 font-medium">এখনো কোনো লিংক যুক্ত করা হয়নি। অ্যাডমিন প্যানেল থেকে লিংক যুক্ত করুন।</p>
-            </div>
-        <?php else: ?>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php foreach ($links as $link): ?>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-blue-500 hover:shadow-md transition-all flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <div class="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md">
-                                <i class="fas fa-folder-open mr-1"></i> <?php echo htmlspecialchars($link['category']); ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <?php foreach ($links as $link): ?>
+                        <div class="link-card bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between group"
+                             data-name="<?php echo strtolower(htmlspecialchars($link['site_name'])); ?>"
+                             data-desc="<?php echo strtolower(htmlspecialchars($link['description'])); ?>">
+                            
+                            <div>
+                                <div class="flex items-start justify-between gap-2 mb-2">
+                                    <h3 class="font-bold text-slate-800 group-hover:text-blue-600 transition-colors text-base line-clamp-1">
+                                        <?php echo htmlspecialchars($link['site_name']); ?>
+                                    </h3>
+                                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200 whitespace-nowrap">
+                                        🔗 Link
+                                    </span>
+                                </div>
+                                <p class="text-slate-600 text-xs line-clamp-2 mb-4 leading-relaxed">
+                                    <?php echo htmlspecialchars($link['description'] ? $link['description'] : 'কোনো বিবরণ দেওয়া নেই।'); ?>
+                                </p>
                             </div>
-                            <h3 class="text-lg font-bold text-slate-900 tracking-tight leading-snug">
-                                <?php echo htmlspecialchars($link['site_name']); ?>
-                            </h3>
-                            <p class="text-slate-500 text-xs leading-relaxed">
-                                <?php echo htmlspecialchars($link['description'] ?: 'কোনো বিবরণ দেওয়া নেই।'); ?>
-                            </p>
-                        </div>
-                        <div class="pt-5 border-t border-slate-50 mt-4 flex justify-between items-center">
-                            <span class="text-[11px] text-slate-400 font-mono">
-                                <?php echo date('d M, Y', strtotime($link['created_at'])); ?>
-                            </span>
-                            <a href="<?php echo htmlspecialchars($link['site_url']); ?>" target="_blank" class="text-sm font-bold text-blue-600 hover:text-blue-800 inline-flex items-center space-x-1">
-                                <span>ভিজিট করুন</span>
-                                <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+
+                            <a href="<?php echo htmlspecialchars($link['site_url']); ?>" target="_blank" 
+                               class="w-full text-center bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white font-medium py-2 px-4 rounded-lg text-xs transition-all duration-200 flex items-center justify-center gap-1.5 border border-blue-100 group-hover:border-transparent">
+                                <span>ভিজিট করুন</span> ➔
                             </a>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        <?php endif; ?>
+        <?php endforeach; ?>
+
     </main>
 
-    <footer class="text-center py-10 border-t border-slate-100 text-xs text-slate-400 font-semibold mt-20">
-        <p>&copy; ২০২৬ BD সেবা পোর্টাল | আপনার ডোমেন দ্বারা চালিত।</p>
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>© <?php echo date('Y'); ?> রিসোর্স পোর্টাল প্ল্যাটফর্ম | ডার্কনেস রিমুভড অ্যান্ড লাইট ইউআই ফিক্সড ⚡</p>
+        </div>
     </footer>
 
+    <script>
+        function filterLinks() {
+            let input = document.getElementById('searchInput').value.toLowerCase().trim();
+            let cards = document.getElementsByClassName('link-card');
+            let sections = document.getElementsByClassName('category-section');
+            let anyVisible = false;
+
+            // প্রতিটি কার্ড লুপ করা
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].getAttribute('data-name');
+                let desc = cards[i].getAttribute('data-desc');
+
+                if (name.includes(input) || desc.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            // যদি কোনো সেকশনের সব কার্ড হাইড হয়ে যায়, তবে সেকশনও হাইড করা
+            for (let j = 0; j < sections.length; j++) {
+                let sectionCards = sections[j].getElementsByClassName('link-card');
+                let sectionVisible = false;
+
+                for (let k = 0; k < sectionCards.length; k++) {
+                    if (sectionCards[k].style.display !== "none") {
+                        sectionVisible = true;
+                        anyVisible = true;
+                        break;
+                    }
+                }
+
+                if (sectionVisible) {
+                    sections[j].style.display = "";
+                } else {
+                    sections[j].style.display = "none";
+                }
+            }
+
+            // নো রেজাল্ট মেসেজ হ্যান্ডলিং
+            let noResults = document.getElementById('noResults');
+            if (anyVisible) {
+                noResults.classList.add('hidden');
+            } else {
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
