@@ -182,6 +182,133 @@ if ($result) {
     </script>
 </body>
 </html>
+            </div>
+            <div>
+                <a href="admin.php" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center gap-1.5">
+                    ⚙️ <span>অ্যাডমিন প্যানেল</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 text-white py-12 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-3xl mx-auto relative z-10">
+                <span class="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Digital Service Platform</span>
+                <h2 class="text-2xl sm:text-4xl font-black mt-3 tracking-tight">প্রয়োজনীয় সকল অনলাইন লিংক ও সার্ভিস পোর্টাল</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto">বাংলাদেশ ও প্রবাসীদের প্রয়োজনীয় সরকারি সেবা, জন্মনিবন্ধন, পাসপোর্ট, স্মার্টকার্ড রিসাইজার এবং ড্রাইভের সকল লিংক এক জায়গায় পাবেন।</p>
+                
+                <div class="mt-8 max-w-xl mx-auto relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 text-base">🔍</div>
+                    <input type="text" id="searchInput" onkeyup="searchLinks()" placeholder="যেকোনো লিংকের নাম বা কী-ওয়ার্ড লিখে সার্চ করুন..." class="w-full pl-11 pr-4 py-3.5 bg-white text-slate-900 rounded-2xl border-none outline-none focus:ring-4 focus:ring-blue-500/30 text-sm font-medium shadow-2xl transition-all">
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            
+            <?php if (empty($links_by_category)): ?>
+                <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-sm max-w-md mx-auto">
+                    <p class="text-4xl mb-2">📥</p>
+                    <h3 class="text-base font-bold text-slate-700">ডাটাবেজে কোনো লিংক নেই!</h3>
+                    <p class="text-xs text-slate-400 mt-1">অনুগ্রহ করে অ্যাডমিন প্যানেল থেকে লিংক যুক্ত করুন।</p>
+                </div>
+            <?php else: ?>
+                
+                <div id="linksContainer" class="space-y-12">
+                    <?php foreach ($links_by_category as $category => $links): ?>
+                        <div class="category-block bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm transition-all">
+                            
+                            <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+                                <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
+                                <h3 class="text-base sm:text-lg font-black text-slate-800 tracking-tight"><?php echo htmlspecialchars($category); ?></h3>
+                                <span class="bg-slate-100 text-slate-500 text-[11px] font-bold px-2 py-0.5 rounded-lg"><?php echo count($links); ?>টি লিংক</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <?php foreach ($links as $link): ?>
+                                    <div class="link-card card-hover border border-slate-100 bg-slate-50/50 p-4 rounded-2xl flex flex-col justify-between gap-3">
+                                        <div>
+                                            <h4 class="link-title text-sm font-bold text-slate-800 tracking-tight leading-snug"><?php echo htmlspecialchars($link['site_name']); ?></h4>
+                                            <?php if (!empty($link['description'])): ?>
+                                                <p class="text-[11px] text-slate-400 mt-1 line-clamp-2"><?php echo htmlspecialchars($link['description']); ?></p>
+                                            <?php else: ?>
+                                                <p class="text-[11px] text-slate-300 italic mt-1">কোনো বিবরণ দেওয়া নেই</p>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between pt-1 border-t border-slate-100/70 mt-1">
+                                            <span class="text-[9px] font-bold text-blue-500 tracking-wide uppercase px-2 py-0.5 bg-blue-50 rounded-md">Live Link</span>
+                                            <a href="<?php echo htmlspecialchars($link['site_url']); ?>" target="_blank" class="bg-white hover:bg-slate-900 border border-slate-200 text-slate-700 hover:text-white font-bold text-xs px-3.5 py-1.5 rounded-xl shadow-sm transition-all flex items-center gap-1 transform active:scale-95">
+                                                <span>প্রবেশ করুন</span> ➔
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div id="noResult" class="hidden text-center py-12 bg-white rounded-3xl border border-slate-200 shadow-sm max-w-sm mx-auto">
+                    <p class="text-3xl mb-2">🔍</p>
+                    <h3 class="text-sm font-bold text-slate-700">দুঃখিত! কোনো লিংক পাওয়া যায়নি</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">অন্য কোনো কি-ওয়ার্ড দিয়ে আবার চেষ্টা করুন।</p>
+                </div>
+
+            <?php endif; ?>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-[11px] text-slate-400 font-bold tracking-wide uppercase">© <?php echo date('Y'); ?> SCANNER PRO PORTAL | DEVELOPED BY RAKIB BHAI ⚡</p>
+        </div>
+    </footer>
+
+    <script>
+        function searchLinks() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const categoryBlocks = document.getElementsByClassName('category-block');
+            let overallFound = false;
+
+            for (let i = 0; i < categoryBlocks.length; i++) {
+                const cardsInBlock = categoryBlocks[i].getElementsByClassName('link-card');
+                let cardsFoundInBlock = 0;
+
+                for (let j = 0; j < cardsInBlock.length; j++) {
+                    const title = cardsInBlock[j].getElementsByClassName('link-title')[0].innerText.toLowerCase();
+                    
+                    if (title.includes(input)) {
+                        cardsInBlock[j].style.display = "";
+                        cardsFoundInBlock++;
+                        overallFound = true;
+                    } else {
+                        cardsInBlock[j].style.display = "none";
+                    }
+                }
+
+                if (cardsFoundInBlock > 0) {
+                    categoryBlocks[i].style.display = "";
+                } else {
+                    categoryBlocks[i].style.display = "none";
+                }
+            }
+
+            const noResultBox = document.getElementById('noResult');
+            if (overallFound) {
+                noResultBox.classList.add('hidden');
+            } else {
+                noResultBox.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
                     ⚙️ <span>অ্যাডমিন প্যানেল</span>
                 </a>
             </div>
