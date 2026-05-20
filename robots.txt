@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://easybuybd.top/sitemap.xml
